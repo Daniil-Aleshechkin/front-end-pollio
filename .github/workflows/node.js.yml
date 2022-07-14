@@ -30,11 +30,14 @@ jobs:
     - run: npm run build --if-present
     - run: npm test
     - name: Test ssh
-      uses: webfactory/ssh-agent@v0.5.4
+      uses: appleboy/ssh-action@master
       with:
-        ssh-private-key: ${{secrets.SSH_PRIVATE_KEY}}
-        run: cd /home/hercules/d/dsa005
-             touch test
+        host: ${{secrets.SSH_HOST}}
+        username: ${{secrets.SSH_USERNAME}}
+        key: ${{secrets.SSH_PRIVATE_KEY}}
+        script: |
+          whoami
+          ls -la
     - name: Tar files
       run: tar -cvf dist.tar dist
     - name: Archive production artifacts
