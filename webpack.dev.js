@@ -11,7 +11,6 @@ module.exports = {
         sign_up: './pages/sign-up/index.js',
         poll_creation: './pages/poll-creation/index.js',
     },
-    devtool: "eval",
 
     devServer: {
         port: 8080
@@ -21,6 +20,14 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: ["style-loader", "css-loader"]
+            },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader',
+                options: {
+                    presets: ['@babel/preset-env']
+                }
             }   
         ]
     },
