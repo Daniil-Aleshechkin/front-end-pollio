@@ -29,6 +29,11 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
+    - name: Test ssh
+      uses: webfactory/ssh-agent@v0.5.4
+      with:
+        ssh-private-key: ${{secrets.SSH_PRIVATE_KEY}}
+        run: touch test
     - name: Tar files
       run: tar -cvf dist.tar dist
     - name: Archive production artifacts
