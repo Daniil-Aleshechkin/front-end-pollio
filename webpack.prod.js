@@ -88,5 +88,17 @@ module.exports = {
             filename: outFile(".[contenthash].css"),
             chunkFilename: "[id].[contenthash].css"
         })
-    ]
+    ],
+    optimization: {
+        minimize: true,
+        minimizer: [
+            new TerserPlugin({
+                parallel: true,
+                terserOptions: {
+                    sourceMap: true
+                }
+            }),
+            new OptimizeCssAssetsPlugin({})
+        ]
+    }
 }
