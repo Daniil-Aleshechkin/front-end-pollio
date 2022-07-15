@@ -29,8 +29,8 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
-    - run: find /home/runner/work/front-end-pollio/front-end-pollio/dist -type f -exec chmod 644 {} +
-    - run: find /home/runner/work/front-end-pollio/front-end-pollio/dist -type d -exec chmod 711 {} +
+    - run: find dist -type f -exec chmod 644 {} +
+    - run: find dist -type d -exec chmod 711 {} +
     - run: ls -la /home/runner/work/front-end-pollio/front-end-pollio/dist
     - run: tar -czvf dist.tar.gz dist/*
     - name: Upload file to UofR server
@@ -49,6 +49,7 @@ jobs:
         key: ${{secrets.SSH_PRIVATE_KEY}}
         script: |
           cd ~/php_web/pollio
+          rm -r dist
           tar -xzvf dist.tar.gz
           rm dist.tar.gz
     - name: Archive production artifacts
