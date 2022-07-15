@@ -37,7 +37,7 @@ jobs:
         username: ${{secrets.SSH_USERNAME}}
         key: ${{secrets.SSH_PRIVATE_KEY}}
         source: dist.tar.gz
-        target: ~/php_web/pollio
+        target: ~/php_web
     - name: Unzip file from UofR server
       uses: appleboy/ssh-action@master
       with:
