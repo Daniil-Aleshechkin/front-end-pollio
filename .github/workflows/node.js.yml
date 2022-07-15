@@ -32,7 +32,7 @@ jobs:
     - run: find /home/runner/work/front-end-pollio/front-end-pollio/dist -type f -exec chmod 644 {} +
     - run: find /home/runner/work/front-end-pollio/front-end-pollio/dist -type d -exec chmod 711 {} +
     - run: ls -la /home/runner/work/front-end-pollio/front-end-pollio/dist
-    - run: tar -czvf dist.tar.gz dist
+    - run: tar -czvf dist.tar.gz dist/*
     - name: Upload file to UofR server
       uses: appleboy/scp-action@master
       with:
@@ -40,7 +40,7 @@ jobs:
         username: ${{secrets.SSH_USERNAME}}
         key: ${{secrets.SSH_PRIVATE_KEY}}
         source: dist.tar.gz
-        target: ~/
+        target: ~/php_web/pollio
     - name: Archive production artifacts
       uses: actions/upload-artifact@v3
       with:
