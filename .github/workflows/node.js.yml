@@ -30,7 +30,9 @@ jobs:
     - run: npm run build --if-present
     - run: npm test
     - name: Upload file to UofR server
-      run: scp -r -i ${{secrets.SSH_PRIVATE_KEY}} dist ${{secrets.SSH_USER}}@${{secrets.SSH_HOST}}~/dist
+      run: touch private-key.pem 
+           echo ${{secrets.SSH_PRIVATE_KEY}} > private-key.pem
+           scp -r -i ./private-key.pem dist ${{secrets.SSH_USER}}@${{secrets.SSH_HOST}}~/dist
     - name: Test ssh
       uses: appleboy/ssh-action@master
       with:
