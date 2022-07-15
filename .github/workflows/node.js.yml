@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x]
+        node-version: [14.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -46,11 +46,9 @@ jobs:
         key: ${{secrets.SSH_PRIVATE_KEY}}
         script: |
           cd ~/php_web/pollio
-          rm -r dist
           tar -xzvf dist.tar.gz
           find dist -type d -exec chmod 711 {} +
           find dist -type f -exec chmod 644 {} +
-          rm dist.tar.gz
     - name: Archive production artifacts
       uses: actions/upload-artifact@v3
       with:
