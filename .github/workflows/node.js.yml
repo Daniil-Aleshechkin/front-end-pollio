@@ -46,9 +46,11 @@ jobs:
         key: ${{secrets.SSH_PRIVATE_KEY}}
         script: |
           cd ~/php_web/pollio
+          rm -rf dist
           tar -xzvf dist.tar.gz
           find dist -type d -exec chmod 711 {} +
           find dist -type f -exec chmod 644 {} +
+          rm dist.tar.gz
     - name: Archive production artifacts
       uses: actions/upload-artifact@v3
       with:
