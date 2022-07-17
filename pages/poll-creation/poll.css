@@ -1,0 +1,23 @@
+.publish-btn {
+    position: absolute;
+    right: 1.5em;
+    bottom: 1.5em;
+}
+
+.add-icon {
+    filter: invert(100);
+    float: right;
+    margin-right: 1.5em;
+}
+
+.option {
+    padding: 1.5em;
+    font-size: 1.5em;
+}
+
+.main-content > h1 {
+    margin: 1em;
+    border-bottom: 5px white solid;
+    padding-bottom: 0.5em;
+    width: fit-content;
+}
