@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.js --mode development",
+    "view": "webpack --config webpack.dev.js --mode development",
     "build": "webpack --config webpack.prod.js --mode production"
   },
   "author": "",

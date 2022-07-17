@@ -41,31 +41,31 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './pages/poll-management/index.html',
             inject: true,
-            chunks: ['index'],
+            chunks: ['poll_management'],
             filename: 'poll_management.html'
         }),
         new HtmlWebpackPlugin({
             template: './pages/poll-results/index.html',
             inject: true,
-            chunks: ['index'],
+            chunks: ['poll_results'],
             filename: 'poll_results.html'
         }),
         new HtmlWebpackPlugin({
             template: './pages/poll-vote/index.html',
             inject: true,
-            chunks: ['index'],
+            chunks: ['poll_vote'],
             filename: 'poll_vote.html'
         }),
         new HtmlWebpackPlugin({
             template: './pages/sign-up/index.html',
             inject: true,
-            chunks: ['index'],
+            chunks: ['sign_up'],
             filename: 'sign_up.html'
         }),
         new HtmlWebpackPlugin({
             template: './pages/poll-creation/index.html',
             inject: true,
-            chunks: ['index'],
+            chunks: ['poll_creation'],
             filename: 'poll_creation.html'
         })
     ]

@@ -1,0 +1,45 @@
+
+.poll {
+    display: flex;
+    flex-direction: column;
+    margin: 1.5em;
+}
+
+.poll > .option {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.poll > .option > *:first-child {
+    width: 5em;
+}
+
+.poll > .option > *:last-child {
+    margin-right: 0;
+    margin-left: auto;
+}
+
+.btn-control {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-control > *  {
+    margin-left: 1em;
+}
+
+.poll-info {
+    display: flex;
+    border-bottom: 5px solid white;
+}
+
+.poll-info > h3:last-child {
+    margin-right: 0;
+    margin-left: auto;
+}
+
+.poll-bar {
+    height: 2em;
+    width: calc((var(--size, 1)/100)*80vw);
+}

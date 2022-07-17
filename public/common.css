@@ -38,11 +38,37 @@ body {
     align-items: center;
     justify-content: flex-start;
 }
-    .nav-bar > .title {
-        margin-right: 0.5em;
-        margin-left: auto;
+    .nav-bar > .title,
+    .nav-bar > .user-welcome,
+    .nav-bar > .create-btn {
         font-size: 2em;
         text-transform: capitalize;
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+        color: white;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .nav-bar > * {
+        border-right: 2px var(--logo-bg) solid;
+    }
+    .nav-bar > *:first-child,
+    .nav-bar > *:last-child {
+        border-right: none;
+    }
+
+
+    .create-btn > svg{
+        filter: invert(100%);
+        margin-left: 0.5em;
+    }
+    .nav-bar > .title {
+        
+        margin-right: 0em;
+        margin-left: auto;
     }
     .nav-bar > .logo {
         width: 4em;
