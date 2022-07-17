@@ -30,6 +30,11 @@ body {
     overflow-y: hidden;
 }
 
+a {
+    text-decoration: none;
+    color: white;
+}
+
 .nav-bar {
     background-color: #B4C5E4;
     height:8vh;
