@@ -1,0 +1,88 @@
+.main-content {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.main-content > form {
+    display: flex;
+    width: 100%;
+
+}   
+
+.main-content > form > .profile-input{
+    margin-right: 1.5em;
+    margin-left: auto;
+    margin-top: 1.5em;
+}
+
+.sign-up-containter { 
+    width: 50%;
+    display: inline-grid;
+    place-content: center;
+}
+
+.sign-up-form {
+    width: auto;
+    font-size: 1.8em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-up-form > h1 {
+    text-align: center;
+}
+
+.sign-up-form > .box {
+    width: fit-content;
+}
+
+.sign-up-form > .box > * {
+    display: block;
+    margin-top: 0.5em;
+}
+
+.sign-up-form > .btn-common {
+    margin-top: 1em;
+}
+
+.profile-preview {
+    border-radius: 50%;
+    width: 30em;
+    height: 30em;
+    background-color: var(--secondary-color);
+    display: inline-grid;
+    place-content: center;
+}
+
+.profile-preview:hover {
+    cursor: pointer;
+}
+
+
+.profile-preview > div {
+    width: 28em;
+    border-radius: 50%;
+    text-align: center;
+    height: 28em;
+    border: 5px dashed white;
+    display: inline-grid;
+    place-content: center;
+}
+
+.profile-input > * > input {
+    display: none;
+}
+
+.profile-input > * > h2 {
+    text-align: center;
+    margin-bottom: 1em;
+}
+.profile-input {
+    display: inline-grid;
+    place-content: center;
+    width: 50%;
+    height: 100%;
+}
