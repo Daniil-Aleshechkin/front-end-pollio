@@ -3,10 +3,10 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin');
 const buildPath = path.resolve(__dirname, 'pollio');
 
-const outFile = (fileExtention) => (entryName) => (entryName.chunk.name == 'index' ? 'index' : entryName.chunk.name + '/' + entryName.chunk.name) + fileExtention  
+const outFile = (fileExtention) => (entryName) => (entryName.chunk.name == 'index' ? 'index' : entryName.chunk.name + '/' + entryName.chunk.name) + fileExtention;  
 
 
 module.exports = {
@@ -101,4 +101,4 @@ module.exports = {
             new OptimizeCssAssetsPlugin({})
         ]
     }
-}
+};
