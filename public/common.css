@@ -96,12 +96,21 @@ body {
     color: white;
     padding: 3px 15px;
     border-radius: 5px;
+    width: fit-content;
+}
+
+.btn-common:hover {
+    cursor: pointer;
 }
 
 .btn-danger {
     background-color: #C84630;
     border-bottom: 2px solid #841806;
     padding: 3px 15px;
-    
+    width: fit-content;
     border-radius: 5px;
+}
+
+.btn-danger:hover {
+    cursor: pointer;
 }

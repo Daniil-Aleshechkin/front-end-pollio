@@ -1,0 +1,40 @@
+.main-content {
+    display: inline-grid;
+    place-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.poll {
+    width: 50vw;
+    position: relative;
+    top: -10vh;
+}
+
+.poll > h1 {
+    text-align: center;
+}
+
+.poll .box {
+}
+
+.poll > .box > .option {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 0.5em;
+    font-size:1.5em;
+    border-radius: 5px;
+}
+
+.poll > .box .option:hover {
+    cursor: pointer;
+}
+
+.selected {
+    background-color: var(--common-color);
+}
+
+.poll > .btn-common {
+    margin-top: 0.6em;
+    float: right;
+}
