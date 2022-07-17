@@ -1,0 +1,30 @@
+#login-form > h3 {
+    text-align: center;
+}
+
+#login-form {
+    width: fit-content;
+    margin-right: 5em;
+}
+
+#login-form > .box {
+    margin-bottom: 1em;
+}
+
+#login-form > .box > *:first-child{
+    margin-top: 0;
+}
+
+#login-form > .box > *{
+    display: block;
+    margin-top: 0.5em;
+}
+
+.login-btns {
+    display: flex;
+
+}
+.login-btns > *:last-child {
+    margin-right: 0;
+    margin-left: auto;
+}

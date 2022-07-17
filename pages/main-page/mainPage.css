@@ -1,0 +1,32 @@
+.main-content {
+    display: flex;
+    height: 100%;
+}
+
+.welcome-content {
+    width: 40%;
+    padding-right: 1.5em ;
+}
+
+.welcome-content > h1 {
+    text-align: end;
+    font-size: 3em;
+}
+
+.welcome-content > div {
+    display: flex; 
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: end;
+}
+
+.poll-display  {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
