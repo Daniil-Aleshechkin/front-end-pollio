@@ -37,9 +37,14 @@
 .poll-info > h3:last-child {
     margin-right: 0;
     margin-left: auto;
+    text-align: right;
+}
+
+:root {
+    --max-poll-bar-size : 80vw
 }
 
 .poll-bar {
     height: 2em;
-    width: calc((var(--size, 1)/100)*80vw);
+    width: calc((var(--size, 1)/100)*var(--max-poll-bar-size));
 }

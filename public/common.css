@@ -43,10 +43,13 @@ a {
     align-items: center;
     justify-content: flex-start;
 }
+    .nav-bar > * {
+        font-size: 4vh;
+    }
+
     .nav-bar > .title,
     .nav-bar > .user-welcome,
     .nav-bar > .create-btn {
-        font-size: 4vh;
         text-transform: capitalize;
         padding-left: 0.5vh;
         padding-right: 0.5vh;
