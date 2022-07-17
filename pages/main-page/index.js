@@ -4,3 +4,4 @@ require("./mainPage.css");
 require("./graphInputs.css");
 require("./graph.css");
 require("./login-page.css");
+require("./responsive.css");

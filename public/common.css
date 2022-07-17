@@ -32,7 +32,7 @@ body {
 
 .nav-bar {
     background-color: #B4C5E4;
-    height: 4em;
+    height:8vh;
     display: flex;
     color: white;
     align-items: center;
@@ -41,10 +41,10 @@ body {
     .nav-bar > .title,
     .nav-bar > .user-welcome,
     .nav-bar > .create-btn {
-        font-size: 2em;
+        font-size: 4vh;
         text-transform: capitalize;
-        padding-left: 0.5em;
-        padding-right: 0.5em;
+        padding-left: 0.5vh;
+        padding-right: 0.5vh;
         color: white;
         height: 100%;
         display: flex;
@@ -60,7 +60,6 @@ body {
         border-right: none;
     }
 
-
     .create-btn > svg{
         filter: invert(100%);
         margin-left: 0.5em;
@@ -71,8 +70,9 @@ body {
         margin-left: auto;
     }
     .nav-bar > .logo {
-        width: 4em;
+        width: 8vh;
         height: 100%;
+        font-size: 2.5vh;
         background-color: #A3B5D7;
         text-align: center;
     }
