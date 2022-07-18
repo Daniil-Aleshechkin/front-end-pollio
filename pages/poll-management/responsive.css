@@ -2,36 +2,15 @@
     :root {
         --max-poll-bar-size : 70vw
     }
-
-    .nav-bar > * {
-        font-size: 3vh;
-    }
-    .nav-bar > *:last-child {
-        font-size: 4vh;
-    }
 }
 
 @media only screen and (max-width: 650px) {
     :root {
         --max-poll-bar-size : 60vw
     }
-    .nav-bar > * {
-        font-size: 2.5vh;
-    }
 
     .option > h3 {
         max-width: 50%;
-    }
-
-    .nav-bar > .create-btn > div{
-        display: none;
-    }
-
-    .nav-bar > .create-btn > svg {
-        margin-left: 4vw;
-        margin-right: 4vw;
-        height: 4vh;
-        width: 4vh;
     }
 
     
@@ -48,24 +27,11 @@
     :root {
         --max-poll-bar-size : 50vw
     }
-    .nav-bar > * {
-        font-size: 2vh;
-    }
-    .nav-bar > *:last-child {
-        font-size: 3vh;
-    }
-
 }
 
 @media only screen and (max-width: 450px) {
     :root {
         --max-poll-bar-size : 50vw
-    }
-    .nav-bar > * {
-        font-size: 1.5vh;
-    }
-    .nav-bar > *:last-child {
-        font-size: 3vh;
     }
 }
 

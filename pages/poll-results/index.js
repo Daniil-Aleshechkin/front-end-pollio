@@ -1,3 +1,4 @@
-require("normalize.css")
-require("../../public/common.css")
-require("./results.css")
+require("normalize.css");
+require("../../public/common.css");
+require("../../public/navResponsive.css");
+require("./results.css");
