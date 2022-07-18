@@ -34,10 +34,18 @@
     border-bottom: 5px solid white;
 }
 
+.poll-info:hover {
+    cursor: pointer;
+}
+
 .poll-info > h3:last-child {
     margin-right: 0;
     margin-left: auto;
     text-align: right;
+}
+
+.mbl-date {
+    display: none;
 }
 
 :root {

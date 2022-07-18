@@ -60,6 +60,12 @@ a {
         align-items: center;
     }
 
+    .nav-bar > .user-welcome:hover,
+    .nav-bar > .create-btn:hover, 
+    .nav-bar > .logo:hover{
+        cursor: pointer;
+    }
+
     .nav-bar > * {
         border-right: 2px var(--logo-bg) solid;
     }
