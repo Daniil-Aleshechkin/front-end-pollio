@@ -1,33 +1,31 @@
 @media only screen and (max-width: 900px) {
     .nav-bar > * {
         font-size: 3vh;
-    }
-    .nav-bar > *:last-child {
-        font-size: 4vh;
-    }
-}
+    }}
 
 @media only screen and (max-width: 650px) {
     .nav-bar > * {
-        font-size: 2.5vh;
+        font-size: 3vh;
     }
+
+    .nav-bar > *:last-child {
+        margin-right: 2vw;
+    }
+
     .nav-bar > .create-btn > div{
         display: none;
     }
 
     .nav-bar > .create-btn > svg {
-        margin-left: 4vw;
-        margin-right: 4vw;
-        height: 4vh;
-        width: 4vh;
+        margin-left: 2vw;
+        margin-right: 2vw;
+        height: 3vh;
+        width: 3vh;
     }
 }
 
 @media only screen and (max-width: 500px) {
     .nav-bar > * {
-        font-size: 2vh;
-    }
-    .nav-bar > *:last-child {
         font-size: 3vh;
     }
 }
@@ -35,8 +33,5 @@
 @media only screen and (max-width: 450px) {
     .nav-bar > * {
         font-size: 1.5vh;
-    }
-    .nav-bar > *:last-child {
-        font-size: 3vh;
     }
 }
