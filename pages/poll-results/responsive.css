@@ -1,0 +1,24 @@
+@media only screen and (max-width: 900px) {
+    .results {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .results {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .option > .poll-bar {
+        width: 5em;
+    }
+
+    .results > h1 {
+        font-size: 1.5em;
+    }
+    .option > h3 {
+        font-size: 1.5em;
+    }
+}
