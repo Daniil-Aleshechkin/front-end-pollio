@@ -36,37 +36,37 @@ module.exports = {
           template: './pages/main-page/index.html',
           inject: true,
           chunks: ['index'],
-          filename: 'index.html'
+          filename: '~dsa005/pollio/index.html'
         }),
         new HtmlWebpackPlugin({
             template: './pages/poll-management/index.html',
             inject: true,
             chunks: ['poll_management'],
-            filename: 'poll_management/index.html'
+            filename: '~dsa005/pollio/poll_management/index.html'
         }),
         new HtmlWebpackPlugin({
             template: './pages/poll-results/index.html',
             inject: true,
             chunks: ['poll_results'],
-            filename: 'poll_results/index.html'
+            filename: '~dsa005/pollio/poll_results/index.html'
         }),
         new HtmlWebpackPlugin({
             template: './pages/poll-vote/index.html',
             inject: true,
             chunks: ['poll_vote'],
-            filename: 'poll_vote/index.html'
+            filename: '~dsa005/pollio/poll_vote/index.html'
         }),
         new HtmlWebpackPlugin({
             template: './pages/sign-up/index.html',
             inject: true,
             chunks: ['sign_up'],
-            filename: 'sign_up/index.html'
+            filename: '~dsa005/pollio/sign_up/index.html'
         }),
         new HtmlWebpackPlugin({
             template: './pages/poll-creation/index.html',
             inject: true,
             chunks: ['poll_creation'],
-            filename: 'poll_creation/index.html'
+            filename: '~dsa005/pollio/poll_creation/index.html'
         })
     ]
 
