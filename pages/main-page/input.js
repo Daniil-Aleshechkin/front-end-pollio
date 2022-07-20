@@ -1,28 +1,16 @@
 module.exports = {
     graphs : [
         {
-            question : "What's your fav framework?5",
+            question : "One option",
             options : [
                 {
                     name : "React",
-                    value : 10
-                },
-                {
-                    name: "Vue",
-                    value: 3
-                },
-                {
-                    name : "Angular",
-                    value : 2
-                },
-                {
-                    name: "Ember",
-                    value: 1
+                    value : 1
                 }
             ]
         },
         {
-            question : "What's your fav framework?4",
+            question : "Two option",
             options : [
                 {
                     name : "React",
@@ -30,41 +18,12 @@ module.exports = {
                 },
                 {
                     name: "Vue",
-                    value: 31
-                },
-                {
-                    name : "Angular",
-                    value : 21
-                },
-                {
-                    name: "Ember",
                     value: 1
                 }
             ]
         },
         {
-            question : "What's your fav framework?3",
-            options : [
-                {
-                    name : "React",
-                    value : 10
-                },
-                {
-                    name: "Vue",
-                    value: 32
-                },
-                {
-                    name : "Angular",
-                    value : 23
-                },
-                {
-                    name: "Ember",
-                    value: 11
-                }
-            ]
-        },
-        {
-            question : "What's your fav framework?2",
+            question : "Three option",
             options : [
                 {
                     name : "React",
@@ -72,11 +31,28 @@ module.exports = {
                 },
                 {
                     name: "Vue",
-                    value: 3
+                    value: 1
                 },
                 {
                     name : "Angular",
-                    value : 2
+                    value : 1
+                }
+            ]
+        },
+        {
+            question : "Four option",
+            options : [
+                {
+                    name : "React",
+                    value : 1
+                },
+                {
+                    name: "Vue",
+                    value: 1
+                },
+                {
+                    name : "Angular",
+                    value : 1
                 },
                 {
                     name: "Ember",
@@ -84,7 +60,7 @@ module.exports = {
                 }
             ]
         },{
-            question : "What's your fav framework?1",
+            question : "Five Option",
             options : [
                 {
                     name : "React",
@@ -92,7 +68,7 @@ module.exports = {
                 },
                 {
                     name: "Vue",
-                    value: 2
+                    value: 1
                 },
                 {
                     name : "Angular",
@@ -100,7 +76,11 @@ module.exports = {
                 },
                 {
                     name: "Ember",
-                    value: 0
+                    value: 1
+                },
+                {
+                    name: "Svelt",
+                    value: 1
                 }
             ]
         }

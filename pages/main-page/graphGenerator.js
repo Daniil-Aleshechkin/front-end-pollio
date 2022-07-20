@@ -38,17 +38,21 @@ function updateMainGraph(graph) {
 function createLegendElements(options) {
     let legendElements = [];
 
-    options.reverse().forEach((option, index) => {
+    options.forEach((option) => {
             let legendElement = createElementWithText("p", option.name);
             legendElement.style.setProperty("--legend-color", getCSSVariable(`option-${option.color}-color`))
             legendElements.push(legendElement);
         }
     )
-
+    console.log(legendElements);
     return legendElements;
 }
 
 function createGraphSegments(options) {
+    if (options.length === 1) {
+        return [createSegment(360, 0, options[0].color)]
+    }
+
     let segments = [];
     
     let total = options.reduce((sum, currentOption) =>
@@ -105,7 +109,7 @@ function onGraphSideBarClick(e)  {
     updateMainGraph(graphs[triggeredGraphIndex]);
 
     triggeredGraph.replaceChildren(...createGraphSegments(graphs[currentGraph].options));
-    currentGraph = triggeredGraphIndex;
-
     triggeredGraph.id = `graph-${currentGraph}`;
+
+    currentGraph = triggeredGraphIndex;
 }
