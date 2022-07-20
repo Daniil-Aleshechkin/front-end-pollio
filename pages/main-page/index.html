@@ -21,8 +21,8 @@
             <div class="main-graph-display">
                 <h2>React or Vue?</h2>
                 <div class="graph" id="main-graph">
-                    <div class="graph-segment" style="--start: 0; --end: 200; --color: var(--option-1-color); --is-over-50-percent: 1; z-index: 1;"></div>
-                    <div class="graph-segment" style="--start: 190; --end: 360; --color: var(--option-2-color); --is-over-50-percent: 1; overflow: hidden;"></div>
+                    <div class="graph-segment" style="--start: 0; --value: 200; --color: var(--option-1-color); --is-over-50-percent: 1; z-index: 1;"></div>
+                    <div class="graph-segment" style="--start: 190; --value: 360; --color: var(--option-2-color); --is-over-50-percent: 1;"></div>
                 </div>
                 <div class="legend">
                     <p style="--legend-color: var(--option-1-color)">React</p>
@@ -31,26 +31,26 @@
             </div>
             <div class="graph-side-bar">
                 <div class="graph" id="graph-1">
-                    <div class="graph-segment" style="--start: 0; --end: 120; --color: var(--option-1-color); --is-over-50-percent: 0; z-index: 3; overflow: hidden;"></div>
-                    <div class="graph-segment" style="--start: 50; --end: 270; --color: var(--option-2-color); --is-over-50-percent: 1; overflow: hidden; z-index: 2;"></div>
-                    <div class="graph-segment" style="--start: 190; --end: 360; --color: var(--option-3-color); --is-over-50-percent: 1; overflow: hidden; z-index: 1;"></div>
+                    <div class="graph-segment" style="--start: 0; --value: 120; --color: var(--option-1-color); --is-over-50-percent: 0; z-index: 3; overflow: hidden;"></div>
+                    <div class="graph-segment" style="--start: 50; --value: 270; --color: var(--option-2-color); --is-over-50-percent: 1; overflow: hidden; z-index: 2;"></div>
+                    <div class="graph-segment" style="--start: 190; --value: 360; --color: var(--option-3-color); --is-over-50-percent: 1; overflow: hidden; z-index: 1;"></div>
                 </div>
                 <div class="graph" id="graph-2">
-                    <div class="graph-segment" style="--start: 0; --end: 40; --color: var(--option-1-color); --is-over-50-percent: 0; overflow: hidden; z-index: 5;"></div>
-                    <div class="graph-segment" style="--start: 30; --end: 50; --color: var(--option-2-color); --is-over-50-percent: 0; overflow: hidden; z-index: 4;"></div>
-                    <div class="graph-segment" style="--start: 70; --end: 60; --color: var(--option-3-color); --is-over-50-percent: 0; overflow: hidden; z-index: 3;"></div>
-                    <div class="graph-segment" style="--start: 120; --end: 200; --color: var(--option-4-color); --is-over-50-percent: 1; z-index: 2;"></div>
-                    <div class="graph-segment" style="--start: 190; --end: 360; --color: var(--option-5-color); --is-over-50-percent: 1; overflow: hidden; z-index: 1;"></div>
+                    <div class="graph-segment" style="--start: 0; --value: 40; --color: var(--option-1-color); --is-over-50-percent: 0; overflow: hidden; z-index: 5;"></div>
+                    <div class="graph-segment" style="--start: 30; --value: 50; --color: var(--option-2-color); --is-over-50-percent: 0; overflow: hidden; z-index: 4;"></div>
+                    <div class="graph-segment" style="--start: 70; --value: 60; --color: var(--option-3-color); --is-over-50-percent: 0; overflow: hidden; z-index: 3;"></div>
+                    <div class="graph-segment" style="--start: 120; --value: 200; --color: var(--option-4-color); --is-over-50-percent: 1; z-index: 2;"></div>
+                    <div class="graph-segment" style="--start: 190; --value: 360; --color: var(--option-5-color); --is-over-50-percent: 1; z-index: 1;"></div>
                 </div>
                 <div class="graph" id="graph-3">
-                    <div class="graph-segment" style="--start: 0; --end: 100; --color: var(--option-1-color); --is-over-50-percent: 0; overflow: hidden; z-index: 3;"></div>
-                    <div class="graph-segment" style="--start: 90; --end: 90; --color: var(--option-2-color); --is-over-50-percent: 0; overflow: hidden; z-index: 2;"></div>
-                    <div class="graph-segment" style="--start: 170; --end: 200; --color: var(--option-3-color); --is-over-50-percent: 1;  z-index: 1;"></div>
+                    <div class="graph-segment" style="--start: 0; --value: 100; --color: var(--option-1-color); --is-over-50-percent: 0; overflow: hidden; z-index: 3;"></div>
+                    <div class="graph-segment" style="--start: 90; --value: 90; --color: var(--option-2-color); --is-over-50-percent: 0; overflow: hidden; z-index: 2;"></div>
+                    <div class="graph-segment" style="--start: 170; --value: 200; --color: var(--option-3-color); --is-over-50-percent: 1;  z-index: 1;"></div>
                 </div>
                 <div class="graph" id="graph-4">
-                    <div class="graph-segment" style="--start: 0; --end: 144; --color: var(--option-1-color); --is-over-50-percent: 0; overflow: hidden; z-index: 3;"></div>
-                    <div class="graph-segment" style="--start: 140; --end: 150; --color: var(--option-2-color); --is-over-50-percent: 0; overflow: hidden; z-index: 2;"></div>
-                    <div class="graph-segment" style="--start: 280; --end: 100; --color: var(--option-3-color); --is-over-50-percent: 0; overflow: hidden; z-index: 1;"></div>
+                    <div class="graph-segment" style="--start: 0; --value: 144; --color: var(--option-1-color); --is-over-50-percent: 0; overflow: hidden; z-index: 3;"></div>
+                    <div class="graph-segment" style="--start: 140; --value: 150; --color: var(--option-2-color); --is-over-50-percent: 0; overflow: hidden; z-index: 2;"></div>
+                    <div class="graph-segment" style="--start: 280; --value: 100; --color: var(--option-3-color); --is-over-50-percent: 0; overflow: hidden; z-index: 1;"></div>
                 </div>
             </div>
         </div>

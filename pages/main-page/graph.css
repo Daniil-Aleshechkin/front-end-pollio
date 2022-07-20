@@ -4,6 +4,18 @@
     border-radius: 50%;
     position: relative;
     overflow: hidden;
+    display: grid;
+    place-content: center;
+
+}
+
+.graph::after {
+    width: 60px;
+    height: 60px;
+    content: "";
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    z-index: 200;
 }
 
 .graph-segment {
@@ -24,7 +36,7 @@
 }
 
 .graph-segment::before {
-    transform: translate(0, 100%) rotate(calc(var(--end) * 1deg));
+    transform: translate(0, 100%) rotate(calc(var(--value) * 1deg));
     transform-origin: 50% 0%;
 
 }
