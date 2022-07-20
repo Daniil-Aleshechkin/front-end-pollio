@@ -1,12 +1,26 @@
 import { graphs } from "./input";
-import { createElementWithText, getCSSVariable } from "../../public/helpers";
+import { createElementWithText, getCSSVariable, shuffle } from "../../public/helpers";
 
 const SEGMENT_UNDER_OFFSET = 2;
 
 let currentGraph = 0;
 
+defineGraphColors(graphs);
+console.log(graphs)
 updateMainGraph(graphs[currentGraph]);
 updateGraphSidebar(graphs.filter((_, index) => index !== 0));
+
+
+function defineGraphColors(graphs) {
+    graphs.forEach(graph => {
+        let colors = Array.from(Array(graph.options.length).keys())
+        shuffle(colors);
+
+        graph.options.forEach((option,index) =>
+            option.color = colors[index]+1
+        )
+    });
+}
 
 function updateMainGraph(graph) {
     let mainGraph = document.getElementsByClassName("main-graph-display")[0];
@@ -26,7 +40,7 @@ function createLegendElements(options) {
 
     options.reverse().forEach((option, index) => {
             let legendElement = createElementWithText("p", option.name);
-            legendElement.style.setProperty("--legend-color", getCSSVariable(`option-${index+1}-color`))
+            legendElement.style.setProperty("--legend-color", getCSSVariable(`option-${option.color}-color`))
             legendElements.push(legendElement);
         }
     )
@@ -48,7 +62,7 @@ function createGraphSegments(options) {
 
         let offset = (index === 0) ? 0 : (currentFilledGraph -  SEGMENT_UNDER_OFFSET);
 
-        segments.push(createSegment(value, offset, options.length - index));
+        segments.push(createSegment(value, offset, option.color));
 
         currentFilledGraph += value - ((index !== 0) ? SEGMENT_UNDER_OFFSET : 0);
     });
@@ -91,7 +105,7 @@ function onGraphSideBarClick(e)  {
     updateMainGraph(graphs[triggeredGraphIndex]);
 
     triggeredGraph.replaceChildren(...createGraphSegments(graphs[currentGraph].options));
-    triggeredGraph.id = `graph-${currentGraph}`;
-
     currentGraph = triggeredGraphIndex;
+
+    triggeredGraph.id = `graph-${currentGraph}`;
 }
