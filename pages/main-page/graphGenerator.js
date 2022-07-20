@@ -1,9 +1,10 @@
-import { graphs } from "./input";
+import { polls } from "./input";
 import { createElementWithText, getCSSVariable, shuffle } from "../../public/helpers";
 
 const SEGMENT_UNDER_OFFSET = 2;
 
 let currentGraph = 0;
+let graphs = polls;
 
 defineGraphColors(graphs);
 console.log(graphs)
