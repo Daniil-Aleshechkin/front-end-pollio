@@ -5,19 +5,10 @@
     margin: 1.5em;
 }
 
-.poll > .option {
-    display: flex;
-    align-items: center;
-    position: relative;
-}
+.poll > .options {
+    display: grid;
 
-.poll > .option > *:first-child {
-    width: 5em;
-}
-
-.poll > .option > *:last-child {
-    margin-right: 0;
-    margin-left: auto;
+    grid-row-end: 3;
 }
 
 .btn-control {
