@@ -3,3 +3,5 @@ require("../../public/common.css");
 require("../../public/navResponsive.css");
 require("./polls.css");
 require("./responsive.css");
+
+require("./poll.js")

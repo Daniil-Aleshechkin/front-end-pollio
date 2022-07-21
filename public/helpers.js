@@ -2,13 +2,31 @@ function getCSSVariable(variableName) {
     return `var(--${variableName})`
 }
 
+function createElement(elementName) {
+    let element = document.createElement(elementName);
+
+    element.withText = (text) => {
+        let textNode = document.createTextNode(text)
+        element.appendChild(textNode)
+        return element
+    }
+
+    element.withClass = (classname) => {
+        element.className = classname
+        return element
+    }
+    
+    return element
+}
+
+function createElementWithClass(elementName, className) {
+    let element = createElement(elementName).withClass(className)
+
+    return element
+}
+
 function createElementWithText(elementName, text) {
-    let element = document.createElement(elementName)
-
-    let textNode = document.createTextNode(text)
-
-    element.appendChild(textNode)
-
+    let element = createElement(elementName).withText(text);
     return element
 }
 
@@ -35,5 +53,6 @@ function shuffle(array) {
 module.exports = {
     getCSSVariable,
     createElementWithText,
+    createElementWithClass,
     shuffle
 }
