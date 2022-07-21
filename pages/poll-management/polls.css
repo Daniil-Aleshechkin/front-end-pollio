@@ -7,8 +7,20 @@
 
 .poll > .options {
     display: grid;
+    align-items: center;
+    grid-column-gap: 0.5em;
+    grid-template-columns: max-content auto min-content;
+}
 
-    grid-row-end: 3;
+.options > h3 { 
+    max-width: 20vw;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.options > .last-item {
+    text-align: end;
 }
 
 .btn-control {
@@ -39,11 +51,7 @@
     display: none;
 }
 
-:root {
-    --max-poll-bar-size : 80vw
-}
-
 .poll-bar {
     height: 2em;
-    width: calc((var(--size, 1)/100)*var(--max-poll-bar-size));
+    width: calc((var(--size, 1))*1%);
 }
