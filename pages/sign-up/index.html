@@ -17,21 +17,25 @@
         <div class="title">poll.io</div>
     </div>
     <div class="main-content">
-        <form action="./">
+        <form id="sign-up-form" action="./">
             <div class="sign-up-containter">
                 <div class="sign-up-form">
                     <h1>Sign up</h1>
                     <div class="box">
                         <label for="username">Username</label>
+                        <div class="error" id="username-error"></div>
                         <input type="text" name="username" id="username"/>
                         <label for="email">Email</label>
+                        <div class="error" id="email-error"></div>
                         <input type="text" name="email" id="email"/>
                         <label for="password">Password</label>
+                        <div class="error" id="username-password"></div>
                         <input type="text" name="password" id ="password"/>
                         <label for="confirmPassword">Confirm Password</label>
+                        <div class="error" id="confirmPassword-error"></div>
                         <input type="text" name="confirmPassword" id="confirmPassword"/>
                     </div> 
-                    <a href="/~dsa005/pollio/poll_management" class="btn-common">Create Account</a>
+                    <a id="submit-btn-mobile" href="/~dsa005/pollio/poll_management" class="btn-common">Create Account</a>
                 </div>
             </div>
             <div class="profile-input">
@@ -45,7 +49,7 @@
                     <input type="file" name="profile-picture">
                 </div>
             </div>
-            <a href="/~dsa005/pollio/poll_management"><div class="btn-common">
+            <a id="submit-btn" href="/~dsa005/pollio/poll_management"><div class="btn-common">
                 Create Account
             </div></a>
                 
