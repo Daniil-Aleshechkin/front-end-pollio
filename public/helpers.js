@@ -15,6 +15,11 @@ function createElement(elementName) {
         element.className = classname
         return element
     }
+
+    element.withAttribute = (attributeName, attributeValue) => {
+        element.setAttribute(attributeName, attributeValue)
+        return element
+    }
     
     return element
 }

@@ -5,11 +5,15 @@
     margin: 1.5em;
 }
 
-.poll > .options {
+.poll-view > .options {
     display: grid;
     align-items: center;
     grid-column-gap: 0.5em;
     grid-template-columns: max-content auto min-content;
+}
+
+.poll-view {
+    display: none;
 }
 
 .options > h3 { 
