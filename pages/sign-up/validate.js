@@ -4,7 +4,7 @@ const getUserFriendlyName = {
     "confirmPassword": "Confirm password",
     "username": "Username"
 }
-document.getElementById("submit-btn").addEventListener("click", onFormSubmit)
+document.getElementById("sign-up-form").addEventListener("submit", onFormSubmit)
 
 function validateForm(form) {
     errors = getValidationErrors(form)
@@ -27,7 +27,9 @@ function onFormSubmit(e) {
 }
 
 function clear_errors() {
-    Array.from(document.getElementsByClassName("error")).forEach(errorContainer => errorContainer.replaceChildren())
+    Array.from(document.getElementsByClassName("error")).forEach(errorContainer => {errorContainer.replaceChildren()
+        errorContainer.style["border"] = "none"
+    })
 }
 
 function displayErrors(errors) {
@@ -40,6 +42,7 @@ function displayErrors(errors) {
         let errorText = document.createTextNode(error.errorMessage);
         errorHeading.appendChild(errorText);
 
+        errorContainer.style["border-bottom"] = "1px solid var(--danger-stroke-color)";
         errorContainer.appendChild(errorHeading);
     })
 }

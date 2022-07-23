@@ -8,11 +8,11 @@
         margin: 0;
     }
 
-    #submit-btn {
+    .sign-up-form > .submit-btn {
         display: none;
     } 
 
-    #submit-btn-mobile {
+    form > .submit-btn {
         display: block;
     }
 

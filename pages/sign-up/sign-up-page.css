@@ -8,7 +8,11 @@
     display: flex;
     width: 100%;
 
-}   
+} 
+
+form > .submit-btn {
+    display: none;
+}
 
 #submit-btn-mobile {
     display: none;
@@ -95,5 +99,4 @@
     color: var(--danger-stroke-color);
     max-width: 100%;
     font-size: 0.75em;
-    border-bottom: 1px solid var(--danger-stroke-color);
 }
