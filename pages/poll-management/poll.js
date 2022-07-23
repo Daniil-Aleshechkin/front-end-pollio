@@ -50,7 +50,10 @@ function createOptions(options) {
 
     let max = options.reduce((currentMax, option) => {
         if (option.value > currentMax)
-            currentMax = option.value;
+            return option.value;
+        else {
+            return currentMax
+        }
     }, 0)
 
     options.forEach((option, index) => {
