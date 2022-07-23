@@ -18,12 +18,15 @@
         <div class="title">poll.io</div>
     </div>
     <div class="main-content">
-        <h1>Question that needs to be answered</h1>
-        <div class="option">Option 1</div>
-        <div class="option">Option 2</div>
-        <div class="option">Option 3</div>
-        <svg class="add-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg>
-        <a href="/~dsa005/pollio/poll_management" class="btn-common publish-btn">Publish</a>
-    </div>
+
+        <form action="/~dsa005/pollio/poll_management">
+            <div id="poll-title" ><h1>Question that needs to be answered</h1>
+            <input type="text" name="pollTitle">
+            </div>
+            <div id="option-container"></div>
+            <svg id="add-option-btn" class="add-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg>
+            <input type="submit" value="Publish" class="btn-common publish-btn">       
+        </form>
+     </div>
 </body>
 </html>

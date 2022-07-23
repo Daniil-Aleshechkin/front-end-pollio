@@ -4,6 +4,12 @@
     bottom: 1.5em;
 }
 
+
+p {
+    margin: 0;
+}
+
+
 .add-icon {
     filter: invert(100);
     float: right;
@@ -17,17 +23,32 @@
 .option {
     padding: 1.5em;
     font-size: 1.5em;
+    display: flex;
 }
 
-.option:hover {
+
+.option > svg {
+    filter: invert(100%);
+    margin-right: 0;
+    margin-left: auto;
+}
+
+.option > *:hover {
     cursor: pointer;
 }
 
-.main-content > h1 {
-    margin: 1em;
+#poll-title {
+    margin: 2em;
     border-bottom: 5px white solid;
-    padding-bottom: 0.5em;
-    width: fit-content;
+    width: calc(100%-3em);
+}
+
+#poll-title > input {
+    font-size: 2em;
+    width: 100%;
+    border: none;
+    margin-bottom: 0.2em;
+    display: none;
 }
 
 .main-content > h1:hover {
