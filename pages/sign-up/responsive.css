@@ -8,9 +8,13 @@
         margin: 0;
     }
 
-    .sign-up-form > div:last-child {
+    #submit-btn {
         display: none;
     } 
+
+    #submit-btn-mobile {
+        display: block;
+    }
 
     body {
         overflow-y: visible;
