@@ -61,7 +61,7 @@ function createOptions(options) {
         
         let optionBar = document.createElement("div");
         let pollBar = createElementWithClass("div", "poll-bar");
-        pollBar.style.setProperty("--size", Math.round(option.value/max));
+        pollBar.style.setProperty("--size", Math.round(option.value/max*100));
         pollBar.style.setProperty("background-color", getCSSVariable(`option-${index+1}-color`));
         optionBar.appendChild(pollBar);
 
