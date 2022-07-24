@@ -10,6 +10,15 @@ function onOpenCalender(e) {
     let calenderButton = e.currentTarget;
     let input = calenderButton.nextElementSibling
 
+    let container = calenderButton.parentElement;
+
+    let calender = container.getElementsByClassName("calender");
+
+    if (Array.from(calender).length === 1) {
+        calender[0].outerHTML = ""
+        return
+    }
+
     Array.from(document.getElementsByClassName("calender")).forEach(calender => {
         calender.outerHTML = ""
     })
