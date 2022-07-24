@@ -111,3 +111,35 @@ p {
     color: var(--danger-color);
     text-decoration: underline;
 }
+
+.errors > * {
+    margin-bottom: 0.5em;
+}
+
+.date-container > svg {
+    filter: invert();
+    margin-left: 1em;
+}
+
+.date-container > svg:hover {
+    cursor: pointer;
+}
+
+.date-container {
+    position: relative;
+    display: flex;
+    margin-left: 2em;
+    align-items: center;
+}
+
+.date-container > h2{
+    width: fit-content;
+}
+
+.date-container > h2:first-child {
+    margin-right: 0.5em;
+}
+
+.date-container > input  {
+    display: none;
+}

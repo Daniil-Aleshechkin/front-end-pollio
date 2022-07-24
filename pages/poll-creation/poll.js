@@ -9,15 +9,15 @@ document.getElementById("poll-title").children[1].addEventListener("focusout", o
 document.getElementById("poll-title").getElementsByTagName("input")[0].addEventListener("input",onInput(100))
 
 let optionAmount = 0;
+let optionId = 0;
 
 addPollOption()
 
 optionAmount = 1;
 
 function onAdd(e) {
-    if (optionAmount === 0) {
-        document.getElementById("poll-errors").replaceChildren()
-    }
+    
+    document.getElementById("poll-errors").replaceChildren()
 
     addPollOption()
 
@@ -41,7 +41,9 @@ function addPollOption() {
     option.appendChild(createInputBox())
 
     let errorContainer = createElementWithClass("div", "errors")
-    errorContainer.id = `option-${(optionAmount+1).toString()}-errors`
+    errorContainer.id = `option-${(optionId+1).toString()}-errors`
+    option.id = `option-${(optionId+1).toString()}`
+    optionId = optionId + 1
 
     pollOptionsContainer.appendChild(errorContainer)
     
@@ -116,9 +118,8 @@ function onFocus(defaultValue) {
             input.select()
         }
         
-        if (input.parentElement.className === "option"){
-            input.parentElement.previousElementSibling.replaceChildren()    }
-    
+        input.parentElement.previousElementSibling.replaceChildren()    
+        
         option.style.setProperty("display", "none")
     }
 }
@@ -134,7 +135,4 @@ function onDelete(e) {
     }
 
     optionAmount = optionAmount - 1
-
-    
 }
-

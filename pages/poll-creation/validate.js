@@ -23,9 +23,9 @@ function validateForm(form) {
 
 function getFormValidationErrors(form) {
     let errors = []
-    
-    let title = form.pollTitle;
 
+    let title = form.pollTitle;
+    
     if (title.value === "Poll title" || title.value === "") {
         errors.push({errorMessage: "Please enter a title", errorSource: "poll-title"})
     }
@@ -36,13 +36,13 @@ function getFormValidationErrors(form) {
 
     let options = Array.from(form.getElementsByTagName("input")).filter(input => !!input.name.match(/option/))
 
-    options.forEach((option,index) => {
+    options.forEach((option) => {
         if (option.value === "Click to edit" || option.value === "") {
-            errors.push({errorMessage: "You must provide a name for this option", errorSource: `option-${index+1}`})
+            errors.push({errorMessage: "You must provide a name for this option", errorSource: option.parentElement.id})
         }
 
         if (option.value.length >= 50) {
-            errors.push({errorMessage:"Options must be lower than 50 characters", errorSource: `option-${index+1}`})
+            errors.push({errorMessage:"Options must be lower than 50 characters", errorSource: option.parentElement.id})
         }
     })
 
