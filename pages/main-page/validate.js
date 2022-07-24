@@ -13,7 +13,6 @@ const getUserFriendlyName = {
 document.getElementById("login-form").addEventListener("submit", onFormSubmit)
 
 function onFormSubmit(e) {
-    e.preventDefault()
     if(!validateForm(e.currentTarget)) {
         e.preventDefault();
     }

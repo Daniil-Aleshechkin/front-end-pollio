@@ -8,3 +8,4 @@ require("./responsive.css");
 
 require("./graphGenerator.js");
 require("./validate.js")
+require("./loginInput.js")
