@@ -59,25 +59,26 @@
             <h1>Make polls for anyone</h1>
             <h1>Complete polls</h1>
             <div>
-                <form id="login-form" action="./">
+                <form id="login-form" action="/~dsa005/pollio/poll_management">
                     <h3>Welcome</h3>
+                    <p id="login-errors" class="errors"></p>
                     <div class="box">
                         <label for="email">
                             Email
                         </label>
+                        <p class="errors" id="email-errors"></p>
                         <input type="text" name="email" id="email"/>
                         <label for="password">
                             Password
                         </label>
+                        <p class="errors" id="password-errors"></p>
                         <input type="text" name="password" id="password"/>
                     </div>           
                     <div class="login-btns">
                         <a href="/~dsa005/pollio/sign_up" class="btn-danger">
                             Sign up
                         </a>
-                        <a href="/~dsa005/pollio/poll_management" class="btn-common">
-                            Login
-                        </a>
+                        <input type="submit" href="/~dsa005/pollio/poll_management" class="btn-common" value="Login"/>
                     </div>
                 </form>
             </div>

@@ -7,7 +7,6 @@ let currentGraph = 0;
 let graphs = polls;
 
 defineGraphColors(graphs);
-console.log(graphs)
 updateMainGraph(graphs[currentGraph]);
 updateGraphSidebar(graphs.filter((_, index) => index !== 0));
 

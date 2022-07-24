@@ -70,6 +70,10 @@
     margin-bottom: 1em;
 }
 
+.graph-side-bar > .graph:hover {
+    cursor: pointer;
+}
+
 .legend > p {
     position: relative;
     margin-left: 5em;

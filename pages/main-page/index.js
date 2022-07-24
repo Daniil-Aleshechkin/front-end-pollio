@@ -7,3 +7,4 @@ require("./login-page.css");
 require("./responsive.css");
 
 require("./graphGenerator.js");
+require("./validate.js")
