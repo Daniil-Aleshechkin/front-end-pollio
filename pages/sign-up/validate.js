@@ -1,3 +1,5 @@
+//TODO: Refactor validation code to helper functions
+
 const getUserFriendlyName = {
     "email" : "Email",
     "password": "Password",
@@ -82,9 +84,10 @@ function getValidationErrors(form) {
     if (!inputs["password"].value.match(/[a-zA-Z]/) || !inputs["password"].value.match(/\d/) && inputs["password"].textLength !== 0)
         errors.push({errorMessage:"Password must contain at least one number and letters", errorSource:"password"});
     
-    // Password must be longer than 12 characters
-    if (inputs["password"].textLength <= 12 && inputs["password"].textLength !== 0)
-        errors.push({errorMessage:"Password must be longer than 12 characters", errorSource:"password"});
+    //TODO: Update this to something that makes more sense and is more secure
+    // Password must be 8 characters
+    if (inputs["password"].textLength == 8 && inputs["password"].textLength !== 0)
+        errors.push({errorMessage:"Password must be 8 characters", errorSource:"password"});
 
     // Confirm password and password must match
     if (inputs["password"].value != inputs["confirmPassword"].value && inputs["password"].textLength !== 0 && inputs["confirmPassword"].textLength !== 0)

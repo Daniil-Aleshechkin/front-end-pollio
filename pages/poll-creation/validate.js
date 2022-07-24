@@ -1,9 +1,10 @@
 import {createElementWithText} from "../../public/helpers.js"
 
+//TODO: Refactor validation code to helper functions
+
 document.getElementById("poll-creation-form").addEventListener("submit", onFormSubmit)
 
 function onFormSubmit(e) {
-    e.preventDefault();
     if(!validateForm(e.currentTarget)) {
         e.preventDefault();
     }
