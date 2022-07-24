@@ -12,10 +12,11 @@
 
 form > .submit-btn {
     display: none;
+    margin-top: 1em;
 }
 
-#submit-btn-mobile {
-    display: none;
+.sign-up-form > .submit-btn {
+    margin-top: 1em;
 }
 
 .main-content > form > .profile-input{
@@ -54,45 +55,6 @@ form > .submit-btn {
 
 .sign-up-form > .a {
     margin-top: 1em;
-}
-
-.profile-preview {
-    border-radius: 50%;
-    width: 30em;
-    height: 30em;
-    background-color: var(--secondary-color);
-    display: inline-grid;
-    place-content: center;
-}
-
-.profile-preview:hover {
-    cursor: pointer;
-}
-
-
-.profile-preview > div {
-    width: 28em;
-    border-radius: 50%;
-    text-align: center;
-    height: 28em;
-    border: 5px dashed white;
-    display: inline-grid;
-    place-content: center;
-}
-
-.profile-input > * > input {
-    display: none;
-}
-
-.profile-input > * > h2 {
-    text-align: center;
-    margin-bottom: 1em;
-}
-.profile-input {
-    display: inline-grid;
-    place-content: center;
-    width: 50%;
-    height: 100%;
 }
 
 .error {

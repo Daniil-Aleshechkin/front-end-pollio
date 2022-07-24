@@ -2,7 +2,8 @@ const getUserFriendlyName = {
     "email" : "Email",
     "password": "Password",
     "confirmPassword": "Confirm password",
-    "username": "Username"
+    "username": "Username",
+    "profile": "Profile"
 }
 document.getElementById("sign-up-form").addEventListener("submit", onFormSubmit)
 
@@ -19,7 +20,7 @@ function validateForm(form) {
 }
 
 function onFormSubmit(e) {
-    console.log(e)
+    e.preventDefault()
     let signUpForm = document.getElementById("sign-up-form")
     if (!validateForm(signUpForm)) {
         e.preventDefault()
@@ -55,7 +56,7 @@ function getValidationErrors(form) {
     let unfilledFields = [];
 
     Array.from(inputs).forEach(input => {
-        if (input.textLength <= 0 && input.name !== "profile-picture"){
+        if (input.textLength <= 0){
             unfilledFields.push(getUserFriendlyName[input.name])
             errors.push({errorMessage: getUserFriendlyName[input.name]+" is required", errorSource: input.name})
         }
