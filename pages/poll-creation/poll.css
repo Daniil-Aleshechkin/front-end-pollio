@@ -21,31 +21,81 @@ p {
 }
 
 .option {
-    padding: 1.5em;
     font-size: 1.5em;
     display: flex;
+    align-items: center;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
 }
 
+.errors {
+    text-decoration: underline;
+    color: var(--danger-color);
+}
+
+#option-container {
+    padding-right: 3em;
+    padding-left: 3em;
+    padding-bottom: 3em;
+}
+
+.option > p:first-child {
+    max-width: 95%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.option:last-child {
+    margin-bottom: 0;
+}
 
 .option > svg {
     filter: invert(100%);
     margin-right: 0;
-    margin-left: auto;
+    margin-left: 0;
+    min-width: 1.5em;
 }
 
 .option > *:hover {
     cursor: pointer;
 }
 
+.option > .character-count {
+    margin-right: 0.5em;
+    margin-left: auto;
+}
+
 #poll-title {
     margin: 2em;
     border-bottom: 5px white solid;
     width: calc(100%-3em);
+    display: flex;
+}
+
+#poll-title > h1:first-child{
+    max-width: 95%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#poll-title > *:last-child {
+    margin-right: 0;
+    margin-left: auto;
+}
+
+#poll-title-errors {
+    margin-top: 2em;
+    margin-bottom: -1em;
+    margin-left: 2em;
+}
+
+#poll-title:hover {
+    cursor: pointer;
 }
 
 #poll-title > input {
     font-size: 2em;
-    width: 100%;
+    width: 90%;
     border: none;
     margin-bottom: 0.2em;
     display: none;
@@ -53,4 +103,11 @@ p {
 
 .main-content > h1:hover {
     cursor: pointer;
+}
+
+.option > .errors  {
+    margin-left: 0.5em;
+    font-size: 0.8em;
+    color: var(--danger-color);
+    text-decoration: underline;
 }

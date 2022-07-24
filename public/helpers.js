@@ -24,6 +24,11 @@ function createElement(elementName) {
     return element
 }
 
+function capitalize(str) {
+    str = str[0].toUpperCase() + str.slice(1);
+    return str;
+}
+
 function createElementWithClass(elementName, className) {
     let element = createElement(elementName).withClass(className)
 
@@ -59,5 +64,6 @@ module.exports = {
     getCSSVariable,
     createElementWithText,
     createElementWithClass,
-    shuffle
+    shuffle,
+    capitalize
 }
