@@ -38,9 +38,6 @@ function getFormValidationErrors(form) {
     let options = Array.from(form.getElementsByTagName("input")).filter(input => !!input.name.match(/option/))
 
     options.forEach((option) => {
-        if (option.value === "Click to edit" || option.value === "") {
-            errors.push({errorMessage: "You must provide a name for this option", errorSource: option.parentElement.id})
-        }
 
         if (option.value.length >= 50) {
             errors.push({errorMessage:"Options must be lower than 50 characters", errorSource: option.parentElement.id})
