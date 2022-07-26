@@ -1,6 +1,5 @@
 import {createElementWithText} from "../../public/helpers.js"
-
-//TODO: Refactor validation code to helper functions
+import { onFormValidate } from "../../public/validate.js";
 
 const getUserFriendlyName = {
     "email" : "Email",
@@ -10,26 +9,7 @@ const getUserFriendlyName = {
     "profile": "Profile"
 }
 
-document.getElementById("login-form").addEventListener("submit", onFormSubmit)
-
-function onFormSubmit(e) {
-    if(!validateForm(e.currentTarget)) {
-        e.preventDefault();
-    }
-}
-
-function validateForm(form) {
-    let errors = getFormValidationErrors(form);
-    
-    if (errors.length > 0) {
-        clearErrors();
-        displayErrors(errors);
-        return false;
-    } else {
-        return true;
-    }
-}
-
+document.getElementById("login-form").addEventListener("submit", onFormValidate(getFormValidationErrors))
 
 //TODO: Remove this code. This is temp code for required stuff in the assignment. Replace it with code that validates the login credentials
 function getFormValidationErrors(form) {
@@ -38,8 +18,6 @@ function getFormValidationErrors(form) {
     let unfilledFields = []
 
     let inputs = form.getElementsByTagName("input");
-
-    console.log(inputs)
 
     Array.from(inputs).forEach(input => {
         if (input.textLength <= 0){
@@ -57,17 +35,4 @@ function getFormValidationErrors(form) {
     errors.push({errorMessage:"Password must be 8 characters", errorSource:"password"});
 
     return errors;
-}
-
-function displayErrors(errors) {
-    errors.forEach(error => {
-        console.log(error)
-        let errorContainer = document.getElementById(error.errorSource+"-errors")
-        
-        errorContainer.appendChild(createElementWithText("p", error.errorMessage))
-    })
-}
-
-function clearErrors() {
-    Array.from(document.getElementsByClassName("errors")).forEach(error => error.replaceChildren())
 }

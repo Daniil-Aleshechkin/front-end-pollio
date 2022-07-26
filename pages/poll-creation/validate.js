@@ -1,26 +1,7 @@
 import {createElementWithText} from "../../public/helpers.js"
+import {onFormValidate} from "../../public/validate.js" 
 
-//TODO: Refactor validation code to helper functions
-
-document.getElementById("poll-creation-form").addEventListener("submit", onFormSubmit)
-
-function onFormSubmit(e) {
-    if(!validateForm(e.currentTarget)) {
-        e.preventDefault();
-    }
-}
-
-function validateForm(form) {
-    let errors = getFormValidationErrors(form);
-    
-    if (errors.length > 0) {
-        clearErrors();
-        displayErrors(errors);
-        return false;
-    } else {
-        return true;
-    }
-}
+document.getElementById("poll-creation-form").addEventListener("submit", onFormValidate(getFormValidationErrors))
 
 function getFormValidationErrors(form) {
     let errors = []
@@ -49,17 +30,4 @@ function getFormValidationErrors(form) {
     }
 
     return errors;
-}
-
-function displayErrors(errors) {
-    errors.forEach(error => {
-        console.log(error)
-        let errorContainer = document.getElementById(error.errorSource+"-errors")
-        
-        errorContainer.appendChild(createElementWithText("p", error.errorMessage))
-    })
-}
-
-function clearErrors() {
-    Array.from(document.getElementsByClassName("errors")).forEach(error => error.replaceChildren())
 }

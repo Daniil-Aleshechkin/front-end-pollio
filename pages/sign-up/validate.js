@@ -1,4 +1,4 @@
-//TODO: Refactor validation code to helper functions
+import { onFormValidate } from "../../public/validate.js"
 
 const getUserFriendlyName = {
     "email" : "Email",
@@ -7,48 +7,7 @@ const getUserFriendlyName = {
     "username": "Username",
     "profile": "Profile"
 }
-document.getElementById("sign-up-form").addEventListener("submit", onFormSubmit)
-
-function validateForm(form) {
-    errors = getValidationErrors(form)
-
-    if (errors.length != 0) {
-        clear_errors()
-        displayErrors(errors);
-        return false
-    } else {
-        return true
-    }
-}
-
-function onFormSubmit(e) {
-    e.preventDefault()
-    let signUpForm = document.getElementById("sign-up-form")
-    if (!validateForm(signUpForm)) {
-        e.preventDefault()
-    }
-}
-
-function clear_errors() {
-    Array.from(document.getElementsByClassName("error")).forEach(errorContainer => {errorContainer.replaceChildren()
-        errorContainer.style["border"] = "none"
-    })
-}
-
-function displayErrors(errors) {
-    errors.forEach(error => {
-        console.log(error)
-        let errorContainer = document.getElementById(`${error.errorSource}-error`)
-
-        let errorHeading = document.createElement("div");
-        errorHeading.className= "error";
-        let errorText = document.createTextNode(error.errorMessage);
-        errorHeading.appendChild(errorText);
-
-        errorContainer.style["border-bottom"] = "1px solid var(--danger-stroke-color)";
-        errorContainer.appendChild(errorHeading);
-    })
-}
+document.getElementById("sign-up-form").addEventListener("submit", onFormValidate(getValidationErrors))
 
 function getValidationErrors(form) {
     let errors = [];

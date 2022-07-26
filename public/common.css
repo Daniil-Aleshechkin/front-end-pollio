@@ -12,12 +12,6 @@
     --common-color: #5DA271;
     --common-stroke-color: #0F6F2B;
 }
-  
-
-html, body {
-    height: 100%;
-    width: 100%;
-}
 
 input[type="submit"] {
     border: none;
@@ -31,8 +25,6 @@ body {
     background-color: #0A1128;
     font-family: 'Inter', sans-serif;
     color: white;
-    height: 100vh;
-    width: 100vw;
     min-height: 100%;
 }
 
