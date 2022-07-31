@@ -19,6 +19,8 @@
 }
 
 .graph-segment {
+    animation-name: graphInitializeStart;
+    animation-duration: 2s;
     width: 100%;
     height: 100%;
     position: absolute;
@@ -38,7 +40,15 @@
 .graph-segment::before {
     transform: translate(0, 100%) rotate(calc(var(--value) * 1deg));
     transform-origin: 50% 0%;
+    animation-name: graphInitializeEnd;
+    animation-duration: 2s;
+}
 
+.no-animate {
+    animation-name: none !important
+}
+.no-animate::before {
+    animation-name: none !important
 }
 
 .graph-segment::after {
@@ -97,4 +107,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+@keyframes graphInitializeStart {
+    0% {
+        transform: translate(0, -50%) rotate(90deg)
+    }
+}
+
+@keyframes graphInitializeEnd {
+    0% {
+        transform: translate(0, 100%)
+    }
 }

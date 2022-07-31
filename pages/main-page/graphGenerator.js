@@ -29,7 +29,7 @@ function updateMainGraph(graph) {
     mainGraph.children[0].replaceChildren(document.createTextNode(graph.question));
     
     //Replace main graph
-    mainGraph.children[1].replaceChildren(...createGraphSegments(graph.options));
+    mainGraph.children[1].replaceChildren(...createGraphSegments(graph.options, true));
 
     //Replace legend
     mainGraph.children[2].replaceChildren(...createLegendElements(graph.options))
@@ -44,13 +44,14 @@ function createLegendElements(options) {
             legendElements.push(legendElement);
         }
     )
-    console.log(legendElements);
+
     return legendElements;
 }
 
-function createGraphSegments(options) {
+function createGraphSegments(options, animate=false) {
     if (options.length === 1) {
-        return [createSegment(360, 0, options[0].color)]
+        return [createSegment(180, 0, options[0].color, 1, animate),
+                createSegment(180, 180, options[0].color, 1, animate)]
     }
 
     let segments = [];
@@ -66,7 +67,30 @@ function createGraphSegments(options) {
 
         let offset = (index === 0) ? 0 : (currentFilledGraph -  SEGMENT_UNDER_OFFSET);
 
-        segments.push(createSegment(value, offset, option.color));
+        if (value >= 180) {
+            segments.push(createSegment(
+                180,
+                offset,
+                option.color,
+                options.length-index,
+                animate
+            ));
+            segments.push(createSegment(
+                value-180+SEGMENT_UNDER_OFFSET,
+                offset+180-SEGMENT_UNDER_OFFSET,
+                option.color,
+                options.length-index,
+                animate
+            ));
+        } else {
+            segments.push(createSegment(
+                value,
+                offset,
+                option.color,
+                options.length-index,
+                animate
+            ));
+        }
 
         currentFilledGraph += value - ((index !== 0) ? SEGMENT_UNDER_OFFSET : 0);
     });
@@ -74,17 +98,19 @@ function createGraphSegments(options) {
     return segments
 }
 
-function createSegment(value, offset, num) {
+function createSegment(value, offset, color, num, animate) {
     let segment = document.createElement("div");
 
     segment.className="graph-segment";
 
     segment.style.setProperty("--start",offset);
     segment.style.setProperty("--value",value);
-    segment.style.setProperty("--is-over-50-percent", (value >= 180) ? 1 : 0);
-    segment.style.setProperty("--color", getCSSVariable(`option-${num}-color`));
+    segment.style.setProperty("--is-over-50-percent", (value > 180) ? 1 : 0);
+    segment.style.setProperty("--color", getCSSVariable(`option-${color}-color`));
     segment.style.setProperty("z-index", num);
-    segment.style.setProperty("overflow", (value >= 180) ? "visible" : "hidden");
+    segment.style.setProperty("overflow", (value > 180) ? "visible" : "hidden");
+    if (!animate)
+        segment.classList.add("no-animate");
 
     return segment;
 }
@@ -107,8 +133,7 @@ function onGraphSideBarClick(e)  {
     let triggeredGraphIndex = triggeredGraphId.slice(triggeredGraphId.length - 1);
 
     updateMainGraph(graphs[triggeredGraphIndex]);
-
-    triggeredGraph.replaceChildren(...createGraphSegments(graphs[currentGraph].options));
+    triggeredGraph.replaceChildren(...createGraphSegments(graphs[currentGraph].options, false));
     triggeredGraph.id = `graph-${currentGraph}`;
 
     currentGraph = triggeredGraphIndex;
