@@ -24,6 +24,10 @@
         font-size: 1.5em;
     }
 
+    .errors > p {
+        font-size: 0.7em;
+    }
+
     .sign-up-form > .box > * {
         font-size: 0.7em;
     }
