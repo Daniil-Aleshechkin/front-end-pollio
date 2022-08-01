@@ -26,10 +26,13 @@
 
 .poll > .box .option:hover {
     cursor: pointer;
+    background-color: var(--common-color);
+    opacity: 0.5;
 }
 
 .selected {
     background-color: var(--common-color);
+    opacity: 1 !important;
 }
 
 .poll > .btn-common {
