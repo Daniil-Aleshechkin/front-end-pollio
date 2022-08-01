@@ -1,10 +1,14 @@
 module.exports = {
     polls : [
         {
-            question : "One option",
+            question : "Majority",
             options : [
                 {
                     name : "React",
+                    value : 20
+                },
+                {
+                    name : "Vue",
                     value : 1
                 }
             ]

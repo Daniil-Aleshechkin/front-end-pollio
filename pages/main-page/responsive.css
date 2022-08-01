@@ -2,12 +2,17 @@
     #login-form {
         margin-right: 0.5em;
     }
+
+    .welcome-content > h1 {
+        font-size: 2.5em;
+    }
 }
 
 @media only screen and (max-width: 1000px) {
     .main-content {
         flex-direction: column;
     }
+
     .main-graph-display  {
         display: flex;
         flex-direction: column;
@@ -35,6 +40,10 @@
     .welcome-content > div {
         justify-content: center;
         margin-bottom: 2em;
+    }
+
+    #login-form > h3 {
+        display: none;
     }
 }
 

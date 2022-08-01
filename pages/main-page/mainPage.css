@@ -11,6 +11,9 @@
 .welcome-content > h1 {
     text-align: end;
     font-size: 3em;
+    opacity: 1;
+    animation-name: welcome;
+    animation-duration: 3s;
 }
 
 .welcome-content > div {
@@ -27,6 +30,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+@keyframes welcome {
+    0% {
+        transform: translate(2em, 0);
+        opacity: 0;
+    }
 }
 
 
