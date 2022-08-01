@@ -36,3 +36,7 @@
     margin-top: 0.6em;
     float: right;
 }
+
+body {
+    height: 100vh;
+}
