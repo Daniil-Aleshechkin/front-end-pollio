@@ -26,6 +26,7 @@
     .welcome-content {
         width: 100%;
         position: inherit;
+        padding-right: 0;
     }
 
     .welcome-content > h1 {
@@ -39,11 +40,17 @@
 
     .welcome-content > div {
         justify-content: center;
-        margin-bottom: 2em;
     }
 
     #login-form > h3 {
         display: none;
+    }
+
+    @keyframes welcome {
+        0% {
+            transform: translate(0, 1.4em);
+            opacity: 0;
+        }
     }
 }
 
