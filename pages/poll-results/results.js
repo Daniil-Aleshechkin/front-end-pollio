@@ -23,16 +23,16 @@ function createOptions(options) {
             return currentMax
         }
     }, 0)
-    console.log(options)
+
     options.forEach((option, index) => {
         let optionContainer = createElementWithClass("div", "option");
+        let pollBarContainer = document.createElement("div");
 
         let optionVoteAmount = createElementWithText("p",option.value.toString());
 
         let optionBar = document.createElement("div");
         let size = option.value/max*100
-        console.log(size, max, option.value)
-
+        
         let pollBar = createElementWithClass("div", "poll-bar");
         pollBar.style.setProperty("--size", Math.round(size));
         pollBar.style.setProperty("background-color", getCSSVariable(`option-${index+1}-color`));
@@ -45,8 +45,8 @@ function createOptions(options) {
         } else {
             pollBar.appendChild(optionVoteAmount);
         }
-
-        optionContainer.appendChild(pollBar)
+        pollBarContainer.appendChild(pollBar)
+        optionContainer.appendChild(pollBarContainer)
         optionContainer.appendChild(optionTitle)
         pollOptions.appendChild(optionContainer);
     })

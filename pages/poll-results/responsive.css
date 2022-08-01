@@ -1,6 +1,17 @@
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1000px) {
     .results {
         width: 80%;
+    }
+    .option > h3 {
+        font-size: 1.5em;
+    }
+
+        .results > h1 {
+        font-size: 1.5em;
+    }
+
+    .option > div > .poll-bar {
+        width: 5em;
     }
 }
 
@@ -11,14 +22,16 @@
 }
 
 @media only screen and (max-width: 500px) {
-    .option > .poll-bar {
-        width: 5em;
+
+    .option > h3 {
+        font-size: 1em;
     }
 
-    .results > h1 {
+        .results > h1 {
         font-size: 1.5em;
     }
-    .option > h3 {
-        font-size: 1.5em;
+
+    .option > div > .poll-bar {
+        width: 3.5em;
     }
 }
