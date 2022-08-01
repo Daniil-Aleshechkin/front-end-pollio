@@ -8,12 +8,12 @@
     .main-content {
         flex-direction: column;
     }
-
-    .nav-bar {
-        
-        padding-right: 2vw;
+    .main-graph-display  {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
-
     .poll-display {
         width: 100%;
     }
@@ -59,6 +59,14 @@
     .welcome-content > h1 {
         font-size: 2.4em;
     }
+
+    .legend {
+        justify-content: space-evenly;
+    }
+
+    .legend > p {
+        margin-left: 1.5em;
+    }
 }
 
 @media only screen and (max-width: 500px) {
@@ -67,13 +75,70 @@
         height: 90px;
     }
 
+    .graph::after {
+        width: 55px;
+        height: 55px;
+    }
+
     .main-graph-display > .graph {
         width: 400px;
         height: 400px;
     }
 
     .main-graph-display > .graph::after {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    .graph {
+        width: 80px;
+        height: 80px;
+    }
+
+    .graph::after {
+        width: 50px;
+        height: 50px;
+    }
+
+    .main-graph-display > .graph {
         width: 300px;
         height: 300px;
+    }
+
+    .main-graph-display > .graph::after {
+        width: 200px;
+        height: 200px;
+    }
+
+    .welcome-content > h1 {
+        font-size: 2em;
+    }
+}
+
+@media only screen and (max-width: 370px) {
+    .graph {
+        width: 60px;
+        height: 60px;
+    }
+
+    .graph::after {
+        width: 40px;
+        height: 40px;
+    }
+
+    .main-graph-display > .graph {
+        width: 300px;
+        height: 300px;
+    }
+
+    .main-graph-display > .graph::after {
+        width: 200px;
+        height: 200px;
+    }
+
+    .welcome-content > h1 {
+        font-size: 1.7em;
     }
 }

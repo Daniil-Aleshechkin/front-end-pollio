@@ -23,15 +23,3 @@
         width: 3vh;
     }
 }
-
-@media only screen and (max-width: 500px) {
-    .nav-bar > * {
-        font-size: 3vh;
-    }
-}
-
-@media only screen and (max-width: 450px) {
-    .nav-bar > * {
-        font-size: 1.5vh;
-    }
-}
