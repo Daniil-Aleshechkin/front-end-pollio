@@ -1,0 +1,30 @@
+@media only screen and (max-width: 500px) {
+    .calender > .calender-dates > p {
+        font-size: 0.9em;
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    .calender > .calender-dates > p {
+        font-size: 0.8em;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .calender > .calender-dates > p {
+        font-size: 0.7em;
+    }
+    .calender > .heading > h3 {
+        font-size: 1em;
+    }
+}
+
+@media only screen and (max-width: 370px) {
+    .calender > .calender-dates > p {
+        font-size: 0.6em;
+    }
+    .calender > .heading > h3 {
+        font-size: 0.9em;
+    }
+}
+
