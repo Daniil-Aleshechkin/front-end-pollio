@@ -46,6 +46,10 @@
         display: none;
     }
 
+    #login-form {
+        margin-bottom: 1.5em;
+    }
+
     @keyframes welcome {
         0% {
             transform: translate(0, 1.4em);
