@@ -1,11 +1,12 @@
 <?php
-    require realpath("../vendor/autoload.php");
-    require realpath("../src/get-content.php");
-    require realpath("../src/DataAccess/pollData.php");
-    require realpath("../src/generateGraph.php");
-    require realpath("../src/generateGraphJSON.php");
-    require realpath("../src/generateColors.php");
-    require realpath("../src/generateLegend.php");
+    require_once realpath("../vendor/autoload.php");
+    require_once realpath("../src/get-content.php");
+    require_once realpath("../src/DataAccess/poll.php");
+    require_once realpath("../src/DataAccess/MainPage/getGraph.php");
+    require_once realpath("../src/SSR/MainPage/generateGraph.php");
+    require_once realpath("../src/SSR/MainPage/generateGraphJSON.php");
+    require_once realpath("../src/SSR/MainPage/generateColors.php");
+    require_once realpath("../src/SSR/MainPage/generateLegend.php");
 
     use function Pollio\Url\getJSFrom;
     use function Pollio\DataAccess\MainPage\getGraphData;

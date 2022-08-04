@@ -1,10 +1,10 @@
 <?php
     namespace Pollio\SSR\MainPage\Legend;
 
-    use Pollio\DataAccess\MainPage\Graph;
-    use Pollio\DataAccess\MainPage\GraphOption;
+    use Pollio\DataAccess\Models\Poll;
+    use Pollio\DataAccess\Models\PollOption;
 
-    function generateLegend(Graph $graph) {
+    function generateLegend(Poll $graph) {
         $legendElements = "";
 
         foreach($graph->Options as $option) {
@@ -14,7 +14,7 @@
         return $legendElements;
     }
 
-    function generateLegendElement(GraphOption $option) {
+    function generateLegendElement(PollOption $option) {
         return "<p style=\"--legend-color: var(--option-$option->Color-color);\"> $option->Name</p>";
     }
 ?>

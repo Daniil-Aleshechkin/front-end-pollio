@@ -1,7 +1,7 @@
 <?php
     namespace Pollio\SSR\MainPage\Colors;
 
-    use Pollio\DataAccess\MainPage\Graph;
+    use Pollio\DataAccess\Models\Poll;
 
     function defineColorsForGraphs(array $graphs) {
         foreach($graphs as $graph) {
@@ -9,7 +9,7 @@
         }
     }
 
-    function defineGraphColors(Graph $graph) {
+    function defineGraphColors(Poll $graph) {
         $availableColors = array();
         foreach($graph->Options as $index=>$option) {
             array_push($availableColors, $index+1);

@@ -1,8 +1,7 @@
 <?php
     namespace Pollio\SSR\MainPage\Graph;
 
-    use Pollio\DataAccess\MainPage\Graph;
-    use Pollio\DataAccess\MainPage\GraphOption;
+    use Pollio\DataAccess\Models\Poll;
 
     define("SEGMENT_UNDER_OFFSET", 2);
 
@@ -26,7 +25,7 @@
         }
     }
 
-    function generateGraphSegments(Graph $graph, bool $noAnimate) {
+    function generateGraphSegments(Poll $graph, bool $noAnimate) {
         $segments = "";
         $total = 0;
 

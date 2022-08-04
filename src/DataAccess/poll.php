@@ -1,7 +1,7 @@
 <?php
-    namespace Pollio\DataAccess\MainPage;
-
-    class GraphOption {
+    namespace Pollio\DataAccess\Models;
+    
+    class PollOption {
         public function __construct(
             public readonly int $votes,
             public readonly string $name
@@ -20,7 +20,7 @@
         }
     };
 
-    class Graph {
+    class Poll {
         public string  $Question;
         public readonly array $Options;
 

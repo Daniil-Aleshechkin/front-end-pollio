@@ -1,77 +1,76 @@
 <?php
     namespace Pollio\DataAccess\MainPage;
-    print(realpath("./graph.php"));
-    require "C:\dev\cs215-proj\\front-end-pollio\src\DataAccess\graph.php";
-    use Pollio\DataAccess\MainPage\Graph;
-    use Pollio\DataAccess\MainPage\GraphOption;
+    
+    use Pollio\DataAccess\Models\Poll;
+    use Pollio\DataAccess\Models\PollOption;
 
     function getGraphData() {
 
         return array(
-            new Graph(
+            new Poll (
                 "Majority",
                 array(
-                    new GraphOption(
+                    new PollOption(
                         100,
                         "React Better"
                     ),
-                    new GraphOption(
+                    new PollOption(
                         1,
                         "Vue"
                     )
     
                 )
             ),
-            new Graph(
+            new Poll(
                 "Majority",
                 array(
-                    new GraphOption(
+                    new PollOption(
                         100,
                         "React better"
                     ),
-                    new GraphOption(
+                    new PollOption(
                         10,
                         "Vue"
                     )
     
                 )
             ),
-            new Graph(
+            new Poll (
                 "Majority",
                 array(
-                    new GraphOption(
+                    new PollOption(
                         10,
                         "React"
                     ),
-                    new GraphOption(
+                    new PollOption(
                         1,
                         "Vue"
                     )
     
                 )
             ),
-            new Graph(
+            new Poll (
                 "Majority",
                 array(
-                    new GraphOption(
+                    new PollOption(
                         10,
                         "React"
                     ),
-                    new GraphOption(
+                    new PollOption(
                         1,
                         "Vue"
                     )
     
                 )
             ),
-            new Graph(
+            new Poll (
                 "Majority",
                 array(
-                    new GraphOption(
+                    new PollOption(
                         10,
                         "React"
                     ),
-                    new GraphOption(
+                    new PollOption(
                         1,
                         "Vue"
                     )
