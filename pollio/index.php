@@ -1,7 +1,21 @@
-<?php 
-    use Pollio\Url;
+<?php
+    require realpath("../vendor/autoload.php");
+    require realpath("../src/get-content.php");
+    require realpath("../src/DataAccess/pollData.php");
+    require realpath("../src/generateGraph.php");
+    require realpath("../src/generateGraphJSON.php");
+    require realpath("../src/generateColors.php");
+    require realpath("../src/generateLegend.php");
 
-    require_once realpath("vendor/autoload.php");
+    use function Pollio\Url\getJSFrom;
+    use function Pollio\DataAccess\MainPage\getGraphData;
+    use function Pollio\SSR\MainPage\GraphJson\getGraphsJson;
+    use function Pollio\SSR\MainPage\Graph\generateGraphSegments;
+    use function Pollio\SSR\MainPage\Colors\defineColorsForGraphs;
+    use function Pollio\SSR\MainPage\Legend\generateLegend;
+
+    $graphs = getGraphData();
+    defineColorsForGraphs($graphs);
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
@@ -16,9 +30,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Open+Sans&display=swap" rel="stylesheet"> 
     <title>Pollio</title>
+    <script defer src="<?php echo getJSFrom("index"); ?>"></script>
+    <script>
+        let graphs = <?php echo getGraphsJson($graphs)?>
+    </script>
 </head>
 <body>
-    <h1> <?php echo $test ?> </h1>
     <div class="nav-bar">
         <div class="logo"><p>logo</p></div>
         <div class="title">poll.io</div>
@@ -26,38 +43,36 @@
     <div class="main-content">
         <div class="poll-display">
             <div class="main-graph-display">
-                <h2>React or Vue?</h2>
+                <h2><?php echo $graphs[0]->Question; ?></h2>
                 <div class="graph" id="main-graph">
-                    <div class="graph-segment" style="--start: 0; --value: 200; --color: var(--option-1-color); --is-over-50-percent: 1; z-index: 1;"></div>
-                    <div class="graph-segment" style="--start: 190; --value: 360; --color: var(--option-2-color); --is-over-50-percent: 1;"></div>
+                    <?php
+                        echo generateGraphSegments($graphs[0], false);
+                    ?>
                 </div>
                 <div class="legend">
-                    <p style="--legend-color: var(--option-1-color)">React</p>
-                    <p style="--legend-color: var(--option-2-color)">Vue</p>
+                    <?php echo generateLegend($graphs[0])?>
                 </div>
             </div>
             <div class="graph-side-bar">
                 <div class="graph" id="graph-1">
-                    <div class="graph-segment" style="--start: 0; --value: 120; --color: var(--option-1-color); --is-over-50-percent: 0; z-index: 3; overflow: hidden;"></div>
-                    <div class="graph-segment" style="--start: 50; --value: 270; --color: var(--option-2-color); --is-over-50-percent: 1; overflow: hidden; z-index: 2;"></div>
-                    <div class="graph-segment" style="--start: 190; --value: 360; --color: var(--option-3-color); --is-over-50-percent: 1; overflow: hidden; z-index: 1;"></div>
+                    <?php
+                        echo generateGraphSegments($graphs[1], true);
+                    ?>
                 </div>
                 <div class="graph" id="graph-2">
-                    <div class="graph-segment" style="--start: 0; --value: 40; --color: var(--option-1-color); --is-over-50-percent: 0; overflow: hidden; z-index: 5;"></div>
-                    <div class="graph-segment" style="--start: 30; --value: 50; --color: var(--option-2-color); --is-over-50-percent: 0; overflow: hidden; z-index: 4;"></div>
-                    <div class="graph-segment" style="--start: 70; --value: 60; --color: var(--option-3-color); --is-over-50-percent: 0; overflow: hidden; z-index: 3;"></div>
-                    <div class="graph-segment" style="--start: 120; --value: 200; --color: var(--option-4-color); --is-over-50-percent: 1; z-index: 2;"></div>
-                    <div class="graph-segment" style="--start: 190; --value: 360; --color: var(--option-5-color); --is-over-50-percent: 1; z-index: 1;"></div>
+                    <?php
+                        echo generateGraphSegments($graphs[2], true);
+                    ?>
                 </div>
                 <div class="graph" id="graph-3">
-                    <div class="graph-segment" style="--start: 0; --value: 100; --color: var(--option-1-color); --is-over-50-percent: 0; overflow: hidden; z-index: 3;"></div>
-                    <div class="graph-segment" style="--start: 90; --value: 90; --color: var(--option-2-color); --is-over-50-percent: 0; overflow: hidden; z-index: 2;"></div>
-                    <div class="graph-segment" style="--start: 170; --value: 200; --color: var(--option-3-color); --is-over-50-percent: 1;  z-index: 1;"></div>
+                    <?php
+                        echo generateGraphSegments($graphs[3], true);
+                    ?>
                 </div>
                 <div class="graph" id="graph-4">
-                    <div class="graph-segment" style="--start: 0; --value: 144; --color: var(--option-1-color); --is-over-50-percent: 0; overflow: hidden; z-index: 3;"></div>
-                    <div class="graph-segment" style="--start: 140; --value: 150; --color: var(--option-2-color); --is-over-50-percent: 0; overflow: hidden; z-index: 2;"></div>
-                    <div class="graph-segment" style="--start: 280; --value: 100; --color: var(--option-3-color); --is-over-50-percent: 0; overflow: hidden; z-index: 1;"></div>
+                    <?php
+                        echo generateGraphSegments($graphs[4], true);
+                    ?>    
                 </div>
             </div>
         </div>

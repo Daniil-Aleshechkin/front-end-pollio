@@ -1,26 +1,12 @@
-import { polls } from "./input";
-import { createElementWithText, getCSSVariable, shuffle } from "../../public/helpers";
+import { createElementWithText, getCSSVariable} from "../../public/helpers";
 
 const SEGMENT_UNDER_OFFSET = 2;
 
 let currentGraph = 0;
-let graphs = polls;
 
-defineGraphColors(graphs);
-updateMainGraph(graphs[currentGraph]);
-updateGraphSidebar(graphs.filter((_, index) => index !== 0));
-
-
-function defineGraphColors(graphs) {
-    graphs.forEach(graph => {
-        let colors = Array.from(Array(graph.options.length).keys())
-        shuffle(colors);
-
-        graph.options.forEach((option,index) =>
-            option.color = colors[index]+1
-        )
-    });
-}
+//defineGraphColors(graphs);
+//updateMainGraph(graphs[currentGraph]);
+//updateGraphSidebar(graphs.filter((_, index) => index !== 0));
 
 function updateMainGraph(graph) {
     let mainGraph = document.getElementsByClassName("main-graph-display")[0];
@@ -115,16 +101,9 @@ function createSegment(value, offset, color, num, animate) {
     return segment;
 }
 
-function updateGraphSidebar (graphs) {
-    let graphSidebar = document.getElementsByClassName("graph-side-bar")[0];
-
-    Array.from(graphSidebar.children).forEach((domGraph, index) => {
-        domGraph.replaceChildren(...createGraphSegments(graphs[index].options));
-        domGraph.id = `graph-${index+1}`;
-        domGraph.addEventListener("click", onGraphSideBarClick);    
-    }
-    );
-}
+Array.from(document.getElementsByClassName("graph-side-bar")[0].children).forEach(graph =>
+    graph.addEventListener("click", onGraphSideBarClick)
+)
 
 function onGraphSideBarClick(e)  {
     let triggeredGraph = e.currentTarget;
