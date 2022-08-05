@@ -2,6 +2,7 @@
     require_once realpath("../../vendor/autoload.php");
     require_once realpath("../../src/get-content.php");
     require_once realpath("../../src/DataAccess/poll.php");
+    require_once realpath("../../src/DataAccess/getConnection.php");
     require_once realpath("../../src/DataAccess/PollResults/getPollResults.php");
     require_once realpath("../../src/SSR/PollResults/generatePollResults.php");
 
@@ -9,7 +10,7 @@
     use function Pollio\DataAccess\PollResults\getPollById;
     use function Pollio\SSR\PollResults\PollOptions\generatePollOptions;
 
-    $poll = getPollById(0);
+    $poll = getPollById($_GET["pollID"]);
 ?>
 
 

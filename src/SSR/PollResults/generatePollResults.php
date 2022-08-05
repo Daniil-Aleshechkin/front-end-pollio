@@ -25,9 +25,14 @@
 
     function generatePollOption(PollOption $option, $maxVotes) {
         $size = intval($option->Votes/$maxVotes*100);
+        
+        if ($size == 0) {
+            $size = 1;
+        }
+
         $voteCount = "<p>$option->Votes</p>";
-        $outsideVoteCount = ($size <= 5) ? $voteCount : "";
-        $pollBar = generatePollBar($size, $option->Color, ($size <= 5) ? "" : $voteCount);
+        $outsideVoteCount = ($size <= 10) ? $voteCount : "";
+        $pollBar = generatePollBar($size, $option->Color, ($size <= 10) ? "" : $voteCount);
         $pollOptionTitle = "<h3>$option->Name</h3>";
 
         return "<div class=\"option\"><div>$outsideVoteCount $pollBar</div>$pollOptionTitle</div>";

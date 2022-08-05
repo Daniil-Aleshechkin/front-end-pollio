@@ -1,82 +1,64 @@
 <?php
+
     namespace Pollio\DataAccess\MainPage;
-    
+
+    use PDOException;
     use Pollio\DataAccess\Models\Poll;
     use Pollio\DataAccess\Models\PollOption;
+    use function POllio\DataAccess\getConnection;
 
     function getGraphData() {
+        $createTempTableQuery = "CREATE TEMPORARY TABLE temp_polls (
+            PollId int,
+            Question varchar(100)
+        );";
 
-        return array(
-            new Poll (
-                "Majority",
-                array(
-                    new PollOption(
-                        100,
-                        "React Better"
-                    ),
-                    new PollOption(
-                        1,
-                        "Vue"
-                    )
-    
-                )
-            ),
-            new Poll(
-                "Majority",
-                array(
-                    new PollOption(
-                        100,
-                        "React better"
-                    ),
-                    new PollOption(
-                        10,
-                        "Vue"
-                    )
-    
-                )
-            ),
-            new Poll (
-                "Majority",
-                array(
-                    new PollOption(
-                        10,
-                        "React"
-                    ),
-                    new PollOption(
-                        1,
-                        "Vue"
-                    )
-    
-                )
-            ),
-            new Poll (
-                "Majority",
-                array(
-                    new PollOption(
-                        10,
-                        "React"
-                    ),
-                    new PollOption(
-                        1,
-                        "Vue"
-                    )
-    
-                )
-            ),
-            new Poll (
-                "Majority",
-                array(
-                    new PollOption(
-                        10,
-                        "React"
-                    ),
-                    new PollOption(
-                        1,
-                        "Vue"
-                    )
-    
-                )
-            )
-        );
+        $insertTempTableQuery = "INSERT INTO temp_polls
+        SELECT
+            PollId,
+            Question
+        FROM Polls
+        ORDER BY PollId DESC
+        LIMIT 5;";
+        $selectTop5TablesQuery = "SELECT
+        P.PollId,
+        P.Question,
+        PO.OptionName,
+        PO.Votes
+    FROM temp_polls AS P
+    INNER JOIN polloptions AS PO ON
+        PO.PollId = P.PollId
+    ORDER BY P.PollId;";
+
+        $polls = array();
+
+        try {
+            $connection = getConnection();
+            $connection->query($createTempTableQuery);
+            $connection->query($insertTempTableQuery);
+            
+            $currentPoll = -1;
+            $pollQuestion = "undefined";
+            $options = array();
+
+            foreach($connection->query($selectTop5TablesQuery) as $row) {
+                if ($row["PollId"] !== $currentPoll) {
+                    if ($currentPoll != -1) {
+                        array_push($polls, new Poll($pollQuestion, $options));
+                    }
+                    $options = array();
+                    $currentPoll = $row["PollId"];
+                    $pollQuestion = $row["Question"];
+                }
+                array_push($options, new PollOption($row["Votes"],$row["OptionName"]));
+            }
+            array_push($polls, new Poll($pollQuestion, $options));
+            $connection->query("DROP TABLE temp_polls;");
+        }
+        catch (PDOException $ex) {
+            echo $ex->getMessage();
+        }
+
+        return $polls;
     }
 ?>

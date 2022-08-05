@@ -60,6 +60,9 @@
                 $maxValue = $option->Votes;
             }
         }
+        if ($maxValue == 0) {
+            $maxValue = 1;
+        }
 
         foreach($poll->Options as $option) {
             $pollOptions .= "<h3>$option->Name</h3>";

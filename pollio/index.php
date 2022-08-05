@@ -3,6 +3,7 @@
     require_once realpath("../src/get-content.php");
     require_once realpath("../src/DataAccess/poll.php");
     require_once realpath("../src/DataAccess/MainPage/getGraph.php");
+    require_once realpath("../src/DataAccess/getConnection.php");
     require_once realpath("../src/SSR/MainPage/generateGraph.php");
     require_once realpath("../src/SSR/MainPage/generateGraphJSON.php");
     require_once realpath("../src/SSR/MainPage/generateColors.php");

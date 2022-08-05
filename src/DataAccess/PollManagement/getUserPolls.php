@@ -3,94 +3,54 @@
     
     use Pollio\DataAccess\Models\Poll;
     use Pollio\DataAccess\Models\PollOption;
+    use function Pollio\DataAccess\getConnection;
+    use PDOException;
+
+    function getUserPollsQuery(int $userID) {
+        return "SELECT
+        P.PollId,
+        P.Question,
+        P.CreatedDate,
+        PO.OptionName,
+        PO.Votes,
+        PO.PollPriority
+    FROM Polls AS P
+    INNER JOIN Users AS U ON
+        P.CreatorId = U.UserId
+    INNER JOIN PollOptions AS PO ON
+        PO.PollId = P.PollId
+    WHERE
+        U.UserId = $userID;";
+    }
 
     function getPolls(int $userID) {
-        return array(
-            new Poll (
-                "Majority",
-                array(
-                    new PollOption(
-                        100,
-                        "React Better",
-                        1
-                    ),
-                    new PollOption(
-                        1,
-                        "Vue",
-                        2
-                    )
-                ),
-                43534536,
-                1
-            ),
-            new Poll(
-                "Majority",
-                array(
-                    new PollOption(
-                        100,
-                        "React better",
-                        1
-                    ),
-                    new PollOption(
-                        10,
-                        "Vue",
-                        2
-                    )
-                ),
-                435345364,
-                2
-            ),
-            new Poll (
-                "Majority",
-                array(
-                    new PollOption(
-                        10,
-                        "React",
-                        1
-                    ),
-                    new PollOption(
-                        1,
-                        "Vue",
-                        2
-                    )
-                ),
-                45345943,
-                3
-            ),
-            new Poll (
-                "Majority",
-                array(
-                    new PollOption(
-                        10,
-                        "React",
-                        1
-                    ),
-                    new PollOption(
-                        1,
-                        "Vue",
-                        2
-                    )
-                ),
-                439583495345,
-                4
-            ),
-            new Poll (
-                "Majority",
-                array(
-                    new PollOption(
-                        10,
-                        "React",
-                        1
-                    ),
-                    new PollOption(
-                        1,
-                        "Vue",
-                        2
-                    )
-                ),
-                43598458345,
-                5
-            )
-        );
+        try {
+            $connection = getConnection();
+            
+            $currentPoll = -1;
+            $pollQuestion = "undefined";
+            $options = array();
+            $polls = array();
+            $pollDate = -1;
+
+            foreach($connection->query(getUserPollsQuery($userID)) as $row) {
+                if ($row["PollId"] !== $currentPoll) {
+                    if ($currentPoll != -1) {
+                        array_push($polls, new Poll($pollQuestion, $options, $pollDate, $currentPoll));
+                    }
+                    $options = array();
+                    $currentPoll = $row["PollId"];
+                    $pollQuestion = $row["Question"];
+                    $pollDate = strtotime($row["CreatedDate"]);
+                }
+                array_push($options, new PollOption($row["Votes"],$row["OptionName"], $row["PollPriority"]));
+            }
+            array_push($polls, new Poll($pollQuestion, $options, $pollDate, $currentPoll));
+        }
+        catch (PDOException $ex) {
+            echo $ex->getMessage();
+        }
+
+        return $polls;
     }
 ?>

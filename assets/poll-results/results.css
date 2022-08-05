@@ -41,13 +41,12 @@ p, h3, h1 {
 .poll-bar {
     width: 7em;
     height: calc(var(--size, 5) * 1%);
-    padding-top: 0.5em;
     margin-bottom: 0;
     animation-name: pollBar;
     animation-duration: 4s;
 }
 
-.poll-bar > p {
+.poll-bar > p, .option > div > p {
     animation-name: voteCount;
     animation-duration: 4s;
 }
