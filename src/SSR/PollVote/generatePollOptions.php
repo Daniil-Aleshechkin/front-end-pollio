@@ -1,5 +1,7 @@
 <?php
 
+    namespace Pollio\SSR\PollVote\PollOptions;
+
     use Pollio\DataAccess\Models\Poll;
 
     function generatePollOptions(Poll $poll) {

@@ -1,7 +1,7 @@
 import * as poll from "./input.js"
 import {createElementWithText, createElementWithClass, getCSSVariable} from "../../public/helpers.js"
 
-createResutls(poll)
+//createResutls(poll)
 
 
 function createResutls(poll) {

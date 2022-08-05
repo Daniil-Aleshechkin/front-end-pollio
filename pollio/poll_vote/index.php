@@ -6,8 +6,8 @@
     require_once realpath("../../src/SSR/PollVote/generatePollOptions.php");
 
     use function Pollio\Url\getJSFrom;
-    use function Pollio\DataAccess\PollManagement\getPollById;
-    use function Pollio\SSR\PollMangement\Polls\generatePolls;
+    use function Pollio\DataAccess\PollVote\getPollById;
+    use function Pollio\SSR\PollVote\PollOptions\generatePollOptions;
 
     $poll = getPollById(0);
 ?>

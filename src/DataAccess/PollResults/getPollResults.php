@@ -1,5 +1,5 @@
 <?php
-    namespace Pollio\DataAccess\PollVote;
+    namespace Pollio\DataAccess\PollResults;
     
     use Pollio\DataAccess\Models\Poll;
     use Pollio\DataAccess\Models\PollOption;
@@ -12,10 +12,12 @@
                     new PollOption(
                         100,
                         "React Better",
+                        1
                     ),
                     new PollOption(
                         1,
                         "Vue",
+                        2
                     )
                 ),
                 43534536,

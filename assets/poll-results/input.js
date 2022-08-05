@@ -3,7 +3,7 @@ module.exports = {
     options : [
         {
             name : "React",
-            value : 1
+            value : 100
         },
         {
             name: "Vue",

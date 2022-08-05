@@ -25,6 +25,9 @@
 .option > div {
     height: 35em;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
 }
 
 .option > h3 {
@@ -39,7 +42,6 @@ p, h3, h1 {
     width: 7em;
     height: calc(var(--size, 5) * 1%);
     padding-top: 0.5em;
-    margin-top: auto;
     margin-bottom: 0;
     animation-name: pollBar;
     animation-duration: 4s;
