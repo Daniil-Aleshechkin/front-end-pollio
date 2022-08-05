@@ -45,9 +45,9 @@
 
     use function Pollio\Url\getBaseURL;
     function generateButtons(Poll $poll) {
-        $baseURL = getBaseURL();
+        $baseURL = getBaseURL(true);
 
-        return "<div class=\"btn-danger\">Delete</div><a class=\"btn-common\" href=\"$baseURL/pollio/poll_vote?pollID=$poll->PollId\">Share</a><a class=\"btn-common\" href=\"$baseURL/pollio/poll_results?pollID=$poll->PollId\">Results</a>";
+        return "<div class=\"btn-danger\">Delete</div><a class=\"btn-common\" href=\"{$baseURL}pollio/poll_vote?pollID=$poll->PollId\">Share</a><a class=\"btn-common\" href=\"{$baseURL}pollio/poll_results?pollID=$poll->PollId\">Results</a>";
     }
 
     function generateOptions(Poll $poll) {

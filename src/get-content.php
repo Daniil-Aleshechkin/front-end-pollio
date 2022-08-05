@@ -4,10 +4,10 @@
     define("IS_DEV", true);
 
     function getJSFrom($page) {
-        return getBaseURL() . $page . ".js";
+        return getBaseURL(false) . $page . ".js";
     }
 
-    function getBaseURL() {
-        return (IS_DEV) ? "http://localhost:8080/" : "";
+    function getBaseURL(bool $baseSite) {
+        return (IS_DEV) ? (($baseSite) ? "http://localhost:8000/" : "http://localhost:8080/")  : "";
     }
 ?>

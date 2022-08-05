@@ -2,7 +2,7 @@ import * as poll from "./input.js"
 import {createElementWithClass, createElementWithText} from "../../public/helpers"
 
 
-addPoll(poll)
+//addPoll(poll)
 
 function addPoll(poll) {
     let pollForm = document.getElementById("poll");
@@ -50,3 +50,5 @@ function onVoteSelect(e) {
         
  
 }
+
+Array.from(document.getElementsByClassName("option")).forEach(option => option.addEventListener("click", onVoteSelect))
