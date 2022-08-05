@@ -4,11 +4,12 @@
     class PollOption {
         public function __construct(
             public readonly int $votes,
-            public readonly string $name
+            public readonly string $name,
+            public readonly int $color = -1
         ) {
             $this->Votes = $votes;
             $this->Name = $name;
-            $this->Color = -1;
+            $this->Color = $color;
         }
 
         function toJson() {
@@ -21,16 +22,21 @@
     };
 
     class Poll {
-        public string  $Question;
+        public readonly string  $Question;
         public readonly array $Options;
+        public readonly int $CreatedDate;
+        public readonly int $PollId;
 
         public function __construct(
             public readonly string  $question,
-            public readonly array $options
+            public readonly array $options,
+            public readonly int $createdDate = 0,
+            public readonly int $pollid = -1
         ) {
-            
+            $this->CreatedDate = $createdDate;
             $this->Question = $question;
             $this->Options = $options;
+            $this->PollId = $pollid;
         }
 
         function toJson() {

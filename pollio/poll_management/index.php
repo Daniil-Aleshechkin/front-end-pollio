@@ -2,8 +2,15 @@
     require_once realpath("../../vendor/autoload.php");
     require_once realpath("../../src/get-content.php");
     require_once realpath("../../src/DataAccess/poll.php");
+    require_once realpath("../../src/DataAccess/PollManagement/getUserPolls.php");
+    require_once realpath("../../src/SSR/PollManagement/generatePolls.php");
 
+    print_r($_SESSION["UserId"]);
     use function Pollio\Url\getJSFrom;
+    use function Pollio\DataAccess\PollManagement\getPolls;
+    use function Pollio\SSR\PollMangement\Polls\generatePolls;
+
+    $polls = getPolls(0);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
 "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
@@ -30,7 +37,7 @@
         <div class="title">poll.io</div>
     </div>
     <div class="main-content">
-        
+        <?php echo generatePolls($polls);?>
     </div>
 </body>
 </html>

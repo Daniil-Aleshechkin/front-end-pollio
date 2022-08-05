@@ -1,7 +1,7 @@
 import {createElementWithText, createElementWithClass, getCSSVariable} from "../../public/helpers"
 import {polls} from "./input"
 
-insertPolls(polls)
+//insertPolls(polls)
 
 function insertPolls(polls) {
     let content = document.getElementsByClassName("main-content")[0]
@@ -96,10 +96,11 @@ function createMobileDate(date) {
 function onPollClick(e) {
     let poll = e.currentTarget.parentElement.getElementsByClassName("poll-view")[0];
 
-    console.log(poll.style.display)
     if(poll.style.display=="none" || poll.style.display =="") {
         poll.style.setProperty("display", "block")
     } else {
         poll.style.setProperty("display","none")
     }
 }
+
+Array.from(document.getElementsByClassName("poll-info")).forEach(poll => poll.addEventListener("click", onPollClick));
