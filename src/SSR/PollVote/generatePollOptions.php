@@ -9,7 +9,7 @@
 
         foreach($poll->Options as $option) {
             $pollOptions .= "<div class=\"option\">$option->Name</div>";
-            $pollOptions .= "<input type=\"radio\" value=\"$option->Name\" name=\"vote\" style=\"display: none;\">";
+            $pollOptions .= "<input type=\"radio\" value=\"$option->Color\" name=\"vote\" style=\"display: none;\">";
         }
 
         return $pollOptions;

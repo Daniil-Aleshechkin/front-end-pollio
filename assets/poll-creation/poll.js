@@ -73,7 +73,6 @@ function onInput(maxCharacter) {
 
 }
 
-
 function createInputBox() {
     let input = document.createElement("input")
 

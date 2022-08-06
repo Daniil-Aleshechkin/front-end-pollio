@@ -33,7 +33,7 @@
         <div class="title">poll.io</div>
     </div>
     <div class="main-content">
-        <form action="/~dsa005/pollio/poll_results?PollId=<?php echo $poll->PollId?>>" id="poll" class="poll">
+        <form method="POST" action="/api/vote.php?PollId=<?php echo $_GET["pollID"]?>" id="poll" class="poll">
             <h1><?php echo $poll->Question ?></h1>
             <div class="box">
                 <?php echo generatePollOptions($poll)?>
