@@ -22,7 +22,7 @@
     }
 
     function firstUserQuery() {
-        return "SELECT UserId FROM users ORDER BY UserId DESC LIMIT 1";
+        return "SELECT UserId FROM Users ORDER BY UserId DESC LIMIT 1";
     }
 
     function uploadImageFile($file) {
