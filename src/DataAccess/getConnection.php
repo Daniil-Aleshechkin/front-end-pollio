@@ -4,6 +4,10 @@
     use PDO;
 
     function getConnection() {
-        return new PDO("mysql:host=localhost;dbname=dsa005", "root", "admin");
+        if (IS_DEV) {
+            return new PDO("mysql:host=localhost;dbname=dsa005", "root", "admin");
+        } else {
+            return new PDO("mysql:host=localhost;dbname=dsa005", "dsa005", "USKHNs2YqnTte2j");
+        }
     }
 ?>
