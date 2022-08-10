@@ -15,7 +15,7 @@
 
             foreach (scandir(realpath($baseDir. $page .'/js' )) as $file ){
                 if (pathinfo($file, PATHINFO_EXTENSION) == 'js') {
-                    return $baseDir + $page . '/js' . '/' . $file;
+                    return $baseDir . $page . '/js' . '/' . $file;
                 }
             }
         }
@@ -31,7 +31,7 @@
 
             foreach (scandir(realpath($baseDir . $page .'/css' )) as $file ){
                 if (pathinfo($file, PATHINFO_EXTENSION) == 'css') {
-                    $URL = $baseDir + $page . '/css' . '/' . $file;
+                    $URL = $baseDir . $page . '/css' . '/' . $file;
                     return "<link href=\"{$URL}\" rel=\"stylesheet\"/>";
                 }
             }
