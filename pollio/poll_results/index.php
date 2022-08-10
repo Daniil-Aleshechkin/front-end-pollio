@@ -7,8 +7,11 @@
     require_once realpath("../../src/SSR/PollResults/generatePollResults.php");
 
     use function Pollio\Url\getJSFrom;
+    use function Pollio\Url\getBaseURL;
     use function Pollio\DataAccess\PollResults\getPollById;
     use function Pollio\SSR\PollResults\PollOptions\generatePollOptions;
+    use function Pollio\SSR\PollResults\PollOptions\getUserNavItems;
+    session_start();
 
     $poll = getPollById($_GET["pollID"]);
 ?>
@@ -30,12 +33,8 @@
 </head>
 <body>
     <div class="nav-bar">
-        <a href="/~dsa005/pollio/" class="logo"><p>logo</p></a>
-        <a href="/~dsa005/pollio/poll_management" class="user-welcome">Welcome, Daniil</a>
-        <a href="/~dsa005/pollio/poll_creation" class="create-btn">
-            <div>Create</div> 
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg>
-        </a>
+        <a href="<?php echo getBaseURL(true)?>pollio/" class="logo"><p>logo</p></a>
+        <?php echo getUserNavItems($_SESSION['UserId'])?>
         <div class="title">poll.io</div>
     </div>
 

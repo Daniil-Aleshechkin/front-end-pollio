@@ -28,7 +28,6 @@
     function uploadImageFile($file) {
         $imageFileType = strtolower(pathinfo($file,PATHINFO_EXTENSION));
         $uploadOk = 1;
-
         echo $file;
 
         // Check if image file is a actual image or fake image
@@ -47,7 +46,6 @@
             echo "Sorry, file already exists.";
             $uploadOk = 0;
         }
-        
         // Allow certain file formats
         if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
         && $imageFileType != "gif" ) {
@@ -60,7 +58,7 @@
             echo "Sorry, your file was not uploaded.";
         // if everything is ok, try to upload file
         } else {
-            if (!move_uploaded_file($_FILES["profile"]["tmp_name"], $file)) {
+            if (!move_uploaded_file($_FILES["profile"]["tmp_name"], "../uploads/" . $file)) {
                echo "Sorry, there was an error uploading your file.";
             } else {
                 return $file; 
@@ -81,22 +79,24 @@
         $saltKeyEncrypted = $AES->encrypt($saltKey,"unsecurekey");
         
         $file = basename($_FILES["profile"]["name"]);
-        $baseURL = getBaseURL(true);
-        $fileURL = uploadImageFile("{$baseURL}uploads/" . $saltKey . basename($_FILES["profile"]["name"]));
         
+        $baseURL = getBaseURL(true);
+        $fileURL = "{$baseURL}uploads/" . uploadImageFile($saltKey . basename($_FILES["profile"]["name"]));
+
         if ($fileURL != "") {
             $connection->query(signUpQuery($_POST["username"], $_POST["email"], bin2hex($passwordHashSalted), bin2hex($saltKeyEncrypted), 'api/'.$fileURL));
-            $connection->query(firstUserQuery());
-            if ($_SESSION['UserId'] == null) {
-                session_destroy();
+            foreach ($connection->query(firstUserQuery()) as $row) {
+                if ($_SESSION['UserId'] == null) {
+                    session_destroy();
+                }
+                
+                session_start();
+                $_SESSION['UserId'] = $row["UserId"];
+                $_SESSION['Username'] = $_POST["username"];
+                
+                header("Location: {$baseURL}pollio/poll_management");
+                die();
             }
-
-            session_start();
-            $_SESSION['UserId'] = $row["UserId"];
-            $_SESSION['Username'] = $_POST["username"];
-            
-            header("Location: {$baseURL}pollio/poll_management");
-            die();
         }
     } catch (PDOException $ex) {
         echo $ex->getMessage();

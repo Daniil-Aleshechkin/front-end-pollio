@@ -20,7 +20,7 @@ profileDropZone.addEventListener("dragleave", e => {
 profileDropZone.addEventListener("drop", e=> {
     e.preventDefault()
     console.log(e.dataTransfer.files)
-    document.getElementById("profile-error").replaceChildren()
+    document.getElementById("profile-errors").replaceChildren()
     
     e.currentTarget.classList.remove("profile-preview--over")
 

@@ -4,6 +4,8 @@
     require_once realpath("../../src/DataAccess/getConnection.php");
     
     use function Pollio\Url\getJSFrom;
+    use function Pollio\Url\getBaseURL;
+    session_start();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
 "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
@@ -21,13 +23,13 @@
 </head>
 <body>
     <div class="nav-bar">
-        <a href="/~dsa005/pollio/" class="logo"><p>logo</p></a>
-        <a href="/~dsa005/pollio/poll_management" class="user-welcome">Welcome, Daniil</a>
+        <a href="<?php echo getBaseURL(true)?>pollio/" class="logo"><p>logo</p></a>
+        <a href="<?php echo getBaseURL(true)?>pollio/poll_management" class="user-welcome">Welcome, <?php echo $_SESSION['Username']?></a>
         <div class="title">poll.io</div>
     </div>
     <div class="main-content">
 
-        <form id="poll-creation-form" method="POST" action="/api/createPoll.php">
+        <form id="poll-creation-form" method="POST" action="<?php echo getBaseURL(true)?>api/createPoll.php">
             <div id="poll-title-errors" class="errors"></div>
             <div id="poll-title" >
                 <h1>Poll title</h1>

@@ -10,6 +10,7 @@
     require_once realpath("../src/SSR/MainPage/generateLegend.php");
 
     use function Pollio\Url\getJSFrom;
+    use function Pollio\Url\getBaseURL;
     use function Pollio\DataAccess\MainPage\getGraphData;
     use function Pollio\SSR\MainPage\GraphJson\getGraphsJson;
     use function Pollio\SSR\MainPage\Graph\generateGraphSegments;
@@ -83,7 +84,7 @@
             <h1>Make polls for anyone</h1>
             <h1>Complete polls</h1>
             <div>
-                <form id="login-form" action="/~dsa005/pollio/poll_management">
+                <form method="POST" id="login-form" action="<?php echo getBaseURL(true)?>api/login.php">
                     <h3>Welcome</h3>
                     <p id="login-errors" class="errors"></p>
                     <div class="box">
@@ -99,10 +100,10 @@
                         <input type="password" name="password" id="password"/>
                     </div>           
                     <div class="login-btns">
-                        <a href="/~dsa005/pollio/sign_up" class="btn-danger">
+                        <a href="<?php echo getBaseURL(true)?>pollio/sign_up" class="btn-danger">
                             Sign up
                         </a>
-                        <input type="submit" href="/~dsa005/pollio/poll_management" class="btn-common" value="Login"/>
+                        <input type="submit" class="btn-common" value="Login"/>
                     </div>
                 </form>
             </div>

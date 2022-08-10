@@ -7,6 +7,7 @@
     require_once realpath("../../src/SSR/PollVote/generatePollOptions.php");
 
     use function Pollio\Url\getJSFrom;
+    use function POllio\Url\getBaseURL;
     use function Pollio\DataAccess\PollVote\getPollById;
     use function Pollio\SSR\PollVote\PollOptions\generatePollOptions;
 
@@ -29,11 +30,11 @@
 </head>
 <body>
     <div class="nav-bar">
-        <a href="/~dsa005/pollio/" class="logo"><p>logo</p></a>
+        <a href="<?php echo getBaseURL(true)?>pollio/" class="logo"><p>logo</p></a>
         <div class="title">poll.io</div>
     </div>
     <div class="main-content">
-        <form method="POST" action="/api/vote.php?PollId=<?php echo $_GET["pollID"]?>" id="poll" class="poll">
+        <form method="POST" action="<?php echo getBaseURL(true)?>api/vote.php?PollId=<?php echo $_GET["pollID"]?>" id="poll" class="poll">
             <h1><?php echo $poll->Question ?></h1>
             <div class="box">
                 <?php echo generatePollOptions($poll)?>

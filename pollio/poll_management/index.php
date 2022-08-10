@@ -6,12 +6,13 @@
     require_once realpath("../../src/DataAccess/PollManagement/getUserPolls.php");
     require_once realpath("../../src/SSR/PollManagement/generatePolls.php");
 
-    print_r($_SESSION["UserId"]);
     use function Pollio\Url\getJSFrom;
+    use function Pollio\Url\getBaseURL;
     use function Pollio\DataAccess\PollManagement\getPolls;
     use function Pollio\SSR\PollMangement\Polls\generatePolls;
+    session_start();
 
-    $polls = getPolls(1);
+    $polls = getPolls($_SESSION['UserId']);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
 "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
@@ -29,9 +30,9 @@
 </head>
 <body>
     <div class="nav-bar">
-        <a href="/~dsa005/pollio/" class="logo"><p>logo</p></a>
-        <div class="user-welcome">Welcome, Daniil</div>
-        <a href="/~dsa005/pollio/poll_creation" class="create-btn">
+        <a href="<?php echo getBaseURL(true)?>pollio" class="logo"><p>logo</p></a>
+        <div class="user-welcome">Welcome, <?php echo $_SESSION['Username']?></div>
+        <a href="<?php echo getBaseURL(true)?>pollio/poll_creation" class="create-btn">
             <div>Create</div> 
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg>
         </a>
