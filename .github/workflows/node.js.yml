@@ -47,6 +47,9 @@ jobs:
         script: |
           cd ~/php_web
           rm -rf pollio
+          rm -rf api
+          rm -rf src
+          rm -rf dist
           tar -xzvf dist.tar.gz
           find pollio -type d -exec chmod 711 {} +
           find pollio -type f -exec chmod 644 {} +
