@@ -32,7 +32,9 @@
         foreach($graph->Options as $index=>$option){
             $total = $total + $option->Votes;
         }
-        
+        if ($total == 0) {
+            $total =1;
+        }
         $currentFilledGraph = 0;
         foreach($graph->Options as $index=>$option) {
             $segment = new GraphSegment(0, 0, 0, 0);

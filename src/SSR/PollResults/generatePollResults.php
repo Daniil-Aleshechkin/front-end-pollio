@@ -5,6 +5,19 @@
     use Pollio\DataAccess\Models\Poll;
     use Pollio\DataAccess\Models\PollOption;
 
+    use function Pollio\Url\getBaseURL;
+
+    function getUserNavItems() {
+        $baseURL = getBaseURL(true);
+        $username = $_SESSION['Username'];
+
+        if ($_SESSION['UserId'] != null) {
+            return "<a href=\"{$baseURL}pollio/poll_management\" class=\"user-welcome\">Welcome, $username</a><a href=\"{$baseURL}pollio/poll_creation\" class=\"create-btn\"><div>Create</div><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z\"/></svg></a>";
+        } else {
+            return "";
+        }
+    }
+
     function generatePollOptions(Poll $poll) {
         $pollOptions = "";
         
@@ -17,15 +30,18 @@
         }
 
         foreach($poll->Options as $option) {
-            $pollOptions .= generatePollOption($option, $maxVotes);
+            if ($maxVotes == 0) {
+                $pollOptions .= generatePollOption($option, 1, 100);
+            } else {
+                $size = intval($option->Votes/$maxVotes*100);
+                $pollOptions .= generatePollOption($option, $maxVotes, $size);
+            }
         }
         
         return $pollOptions;
     }
 
-    function generatePollOption(PollOption $option, $maxVotes) {
-        $size = intval($option->Votes/$maxVotes*100);
-        
+    function generatePollOption(PollOption $option, $maxVotes, $size) {
         if ($size == 0) {
             $size = 1;
         }

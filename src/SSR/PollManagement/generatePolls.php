@@ -6,6 +6,10 @@
     use Pollio\DataAccess\Models\PollOption;
 
     function generatePolls(array $polls) {
+        if ($polls == null or count($polls) == 0) {
+            return;
+        }
+
         $pollElements = "";
         foreach($polls as $poll) {
             $pollElements .= generatePoll($poll);
@@ -14,6 +18,10 @@
     }
 
     function generatePoll(Poll $poll) {
+        if ($poll->Question == null || $poll-> Question == "") {
+            return;
+        }
+
         $pollInfo = generatePollInfo($poll);
         $pollView = generateView($poll);
 

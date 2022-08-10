@@ -28,7 +28,7 @@
             $connection = getConnection();
             
             $currentPoll = -1;
-            $pollQuestion = "undefined";
+            $pollQuestion = "";
             $options = array();
             $polls = array();
             $pollDate = -1;

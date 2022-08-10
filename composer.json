@@ -10,5 +10,8 @@
             "name": "Daniil-Aleshechkin",
             "email": "aleshechkin.daniil@gmail.com"
         }
-    ]
+    ],
+    "require": {
+        "mervick/aes-everywhere": "^1.1"
+    }
 }

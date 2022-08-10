@@ -37,7 +37,15 @@
 
     try {
         $connection = getConnection();
-        $connection->query(insertPollQuery($_POST["pollTitle"], 1 , $_POST["openDate"], $_POST["closeDate"]));
+        session_start();
+        
+        if ($_SESSION['UserId'] == null) {
+            $baseURL = getBaseURL(true);
+            header("Location: {$baseURL}pollio");
+            die();
+        }
+        
+        $connection->query(insertPollQuery($_POST["pollTitle"], $_SESSION['UserId'] , $_POST["openDate"], $_POST["closeDate"]));
         
         $currOption = 0;
 
@@ -45,7 +53,7 @@
             $option = $_POST["option$currOption"];
             if ($_POST["option$currOption"] != "" && $_POST["option$currOption"] != null)
             {   
-                $connection->query(insertPollOptionQuery($_POST["option$currOption"], $currOption));
+                $connection->query(insertPollOptionQuery($_POST["option$currOption"], $currOption+1));
             }
             $currOption += 1;
         }
