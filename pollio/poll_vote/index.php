@@ -7,6 +7,7 @@
     require_once realpath("../../src/SSR/PollVote/generatePollOptions.php");
 
     use function Pollio\Url\getJSFrom;
+    use function Pollio\Url\getCSSLinkFrom;
     use function POllio\Url\getBaseURL;
     use function Pollio\DataAccess\PollVote\getPollById;
     use function Pollio\SSR\PollVote\PollOptions\generatePollOptions;
@@ -27,6 +28,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Open+Sans&display=swap" rel="stylesheet"> 
     <title>Pollio - Vote</title>
     <script defer src="<?php echo getJSFrom("poll_vote");?>"></script>
+    <?php echo getCSSLinkFrom("poll_vote");?>
 </head>
 <body>
     <div class="nav-bar">

@@ -5,6 +5,7 @@
     
     use function Pollio\Url\getJSFrom;
     use function Pollio\Url\getBaseURL;
+    use function Pollio\Url\getCSSLinkFrom;
     session_start();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
@@ -20,6 +21,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Open+Sans&display=swap" rel="stylesheet"> 
     <title>Pollio - Poll Creation</title>
     <script defer src="<?php echo getJSFrom("poll_creation");?>"></script>
+    <?php echo getCSSLinkFrom("poll_creation");?>
 </head>
 <body>
     <div class="nav-bar">

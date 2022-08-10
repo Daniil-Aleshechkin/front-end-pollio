@@ -11,6 +11,7 @@
 
     use function Pollio\Url\getJSFrom;
     use function Pollio\Url\getBaseURL;
+    use function Pollio\Url\getCSSLinkFrom;
     use function Pollio\DataAccess\MainPage\getGraphData;
     use function Pollio\SSR\MainPage\GraphJson\getGraphsJson;
     use function Pollio\SSR\MainPage\Graph\generateGraphSegments;
@@ -33,10 +34,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Open+Sans&display=swap" rel="stylesheet"> 
     <title>Pollio</title>
-    <script defer src="<?php echo getJSFrom("index"); ?>"></script>
+    <script defer src="<?php echo getJSFrom("main_page"); ?>"></script>
     <script>
         let graphs = <?php echo getGraphsJson($graphs)?>
     </script>
+    <?php echo getCSSLinkFrom("main_page");?>
 </head>
 <body>
     <div class="nav-bar">

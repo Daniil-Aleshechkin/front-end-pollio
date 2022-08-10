@@ -8,6 +8,7 @@
 
     use function Pollio\Url\getJSFrom;
     use function Pollio\Url\getBaseURL;
+    use function Pollio\Url\getCSSLinkFrom;
     use function Pollio\DataAccess\PollManagement\getPolls;
     use function Pollio\SSR\PollMangement\Polls\generatePolls;
     session_start();
@@ -27,6 +28,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Open+Sans&display=swap" rel="stylesheet"> 
     <title>Pollio - My Polls</title>
     <script defer src="<?php echo getJSFrom("poll_management");?>"></script>
+    <?php echo getCSSLinkFrom("poll_management");?>
 </head>
 <body>
     <div class="nav-bar">

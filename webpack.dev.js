@@ -4,7 +4,7 @@ const path = require("path");
 module.exports = {
 
     entry: {
-        index: './assets/main-page/index.js',
+        main_page: './assets/main-page/index.js',
         poll_management: './assets/poll-management/index.js',
         poll_results: './assets/poll-results/index.js',
         poll_vote: './assets/poll-vote/index.js',

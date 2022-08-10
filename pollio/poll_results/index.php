@@ -8,6 +8,7 @@
 
     use function Pollio\Url\getJSFrom;
     use function Pollio\Url\getBaseURL;
+    use function Pollio\Url\getCSSLinkFrom;
     use function Pollio\DataAccess\PollResults\getPollById;
     use function Pollio\SSR\PollResults\PollOptions\generatePollOptions;
     use function Pollio\SSR\PollResults\PollOptions\getUserNavItems;
@@ -30,6 +31,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Open+Sans&display=swap" rel="stylesheet"> 
     <title>Pollio - Poll Results</title>
     <script defer src="<?php echo getJSFrom("poll_results");?>"></script>
+    <?php echo getCSSLinkFrom("poll_results");?>
 </head>
 <body>
     <div class="nav-bar">

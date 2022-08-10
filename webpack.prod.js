@@ -4,16 +4,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-const buildPath = path.resolve(__dirname, 'pollio');
+const buildPath = path.resolve(__dirname, 'dist');
 
-const outFile = (fileExtention) => (entryName) => (entryName.chunk.name == 'index' ? 'index' : entryName.chunk.name + '/' + entryName.chunk.name) + fileExtention;  
+const outFile = (fileExtention, fileType) => (entryName) => entryName.chunk.name + '/' + fileType +'/' + entryName.chunk.name + fileExtention;  
 
 
 module.exports = {
-    devtool: "source-map",
-
     entry: {
-        index: './assets/main-page/index.js',
+        main_page: './assets/main-page/index.js',
         poll_management: './assets/poll-management/index.js',
         poll_results: './assets/poll-results/index.js',
         poll_vote: './assets/poll-vote/index.js',
@@ -22,7 +20,7 @@ module.exports = {
     },
 
     output: {
-        filename: outFile('.[hash:20].js'),
+        filename: outFile('.[hash:20].js', 'js'),
         path: buildPath,
         clean: true
     },
@@ -49,7 +47,7 @@ module.exports = {
 
     plugins: [
         new MiniCssExtractPlugin({
-            filename: outFile(".[contenthash].css"),
+            filename: outFile(".[contenthash].css", 'css'),
             chunkFilename: "[id].[contenthash].css"
         })
     ],
