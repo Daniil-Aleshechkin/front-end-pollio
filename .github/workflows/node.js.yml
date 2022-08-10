@@ -54,16 +54,16 @@ jobs:
           rm -rf dist
           rm -rf vendor
           tar -xzvf dist.tar.gz
-          find pollio -type d -exec chmod 711 {} +
-          find pollio -type f -exec chmod 655 {} +
-          find api -type d -exec chmod 711 {} +
-          find api -type f -exec chmod 655 {} +
-          find dist -type d -exec chmod 711 {} +
-          find dist -type f -exec chmod 644 {} +
-          find src -type d -exec chmod 711 {} +
-          find src -type f -exec chmod 655 {} +
-          find vendor -type d -exec chmod 711 {} +
-          find vendor -type f -exec chmod 655 {} +
+          find pollio -type d -exec chmod 777 {} +
+          find pollio -type f -exec chmod 777 {} +
+          find api -type d -exec chmod 777 {} +
+          find api -type f -exec chmod 777 {} +
+          find dist -type d -exec chmod 777 {} +
+          find dist -type f -exec chmod 777 {} +
+          find src -type d -exec chmod 777 {} +
+          find src -type f -exec chmod 777 {} +
+          find vendor -type d -exec chmod 777 {} +
+          find vendor -type f -exec chmod 777 {} +
           rm dist.tar.gz
     - name: Archive production artifacts
       uses: actions/upload-artifact@v3
