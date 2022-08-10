@@ -1,0 +1,17 @@
+{
+    "name": "daniil/front-end-pollio",
+    "autoload": {
+        "psr-4": {
+            "Pollio\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Daniil-Aleshechkin",
+            "email": "aleshechkin.daniil@gmail.com"
+        }
+    ],
+    "require": {
+        "mervick/aes-everywhere": "^1.1"
+    }
+}

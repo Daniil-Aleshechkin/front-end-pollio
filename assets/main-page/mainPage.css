@@ -1,0 +1,48 @@
+.main-content {
+    display: flex;
+}
+
+body {
+    height: fit-content;
+}
+
+.welcome-content {
+    width: 40%;
+    padding-right: 1.5em ;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.welcome-content > h1 {
+    text-align: end;
+    font-size: 3em;
+    opacity: 1;
+    animation-name: welcome;
+    animation-duration: 3s;
+}
+
+.welcome-content > div {
+    display: flex; 
+    margin-bottom: 1.5em;
+    margin-top: auto;
+    width: 100%;
+    justify-content: end;
+}
+
+.poll-display  {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes welcome {
+    0% {
+        transform: translate(2em, 0);
+        opacity: 0;
+    }
+}
+
+
