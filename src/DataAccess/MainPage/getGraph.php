@@ -26,7 +26,7 @@
         PO.OptionName,
         PO.Votes
     FROM temp_polls AS P
-    INNER JOIN polloptions AS PO ON
+    INNER JOIN PollOptions AS PO ON
         PO.PollId = P.PollId
     ORDER BY P.PollId;";
 
