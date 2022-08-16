@@ -31,6 +31,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Open+Sans&display=swap" rel="stylesheet"> 
     <title>Pollio - Poll Results</title>
     <script defer src="<?php echo getJSFrom("poll_results");?>"></script>
+    <script>
+        let pollId = <?php echo $_GET["pollID"]?>
+    </script>
     <?php echo getCSSLinkFrom("poll_results");?>
 </head>
 <body>

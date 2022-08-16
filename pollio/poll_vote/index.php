@@ -36,12 +36,13 @@
         <div class="title">poll.io</div>
     </div>
     <div class="main-content">
-        <form method="POST" action="<?php echo getBaseURL(true)?>api/vote.php?PollId=<?php echo $_GET["pollID"]?>" id="poll" class="poll">
+        <form id="voteForm" method="POST" action="<?php echo getBaseURL(true)?>api/vote.php?PollId=<?php echo $_GET["pollID"]?>" id="poll" class="poll">
             <h1><?php echo $poll->Question ?></h1>
             <div class="box">
                 <?php echo generatePollOptions($poll)?>
             </div>
-            <input type="submit" class="btn-common" value="Save">
+            <a id="view-results-link" class="btn-common" style="display: none;" href="<?php echo getBaseURL(true)?>pollio/poll_results?PollId=<?php echo $_GET["pollID"]?>">View Results</a>
+            <input id="submit-btn" type="submit" class="btn-common" value="Save">
         </form>
     </div>
 </body>

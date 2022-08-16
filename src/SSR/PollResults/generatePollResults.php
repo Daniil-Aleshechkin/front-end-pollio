@@ -46,9 +46,9 @@
             $size = 1;
         }
 
-        $voteCount = "<p>$option->Votes</p>";
-        $outsideVoteCount = ($size <= 10) ? $voteCount : "";
-        $pollBar = generatePollBar($size, $option->Color, ($size <= 10) ? "" : $voteCount);
+        $voteCount = ($size > 10) ? "<p>$option->Votes</p>" : "<p style=\"display: none;\">$option->Votes</p>";
+        $outsideVoteCount = ($size <= 10) ? "<p>$option->Votes</p>" : "<p style=\"display: none;\">$option->Votes</p>";
+        $pollBar = generatePollBar($size, $option->Color, $voteCount);
         $pollOptionTitle = "<h3>$option->Name</h3>";
 
         return "<div class=\"option\"><div>$outsideVoteCount $pollBar</div>$pollOptionTitle</div>";

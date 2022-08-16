@@ -1,8 +1,50 @@
 import * as poll from "./input.js"
-import {createElementWithText, createElementWithClass, getCSSVariable} from "../../public/helpers.js"
+import {createElementWithText, createElementWithClass, getCSSVariable, getBaseURL} from "../../public/helpers.js"
 
 //createResutls(poll)
 
+function uploadResults(results) {
+    let max = Math.max(...results.map(result => result.Votes));
+
+    Array.from(document.getElementsByClassName("poll-bar")).forEach((pollBar,i) => {
+        let size = Math.floor(results[i].Votes/max*100);
+
+        if (size == 0) {
+            size = 1
+        }
+
+        if (max == 0) {
+            size = 100
+        }
+
+        if (size >=10) {
+            pollBar.children[0].textContent = results[i].Votes
+            pollBar.children[0].style.setProperty("display", "block")
+            pollBar.previousElementSibling.style.setProperty("display","none")
+        } else {
+            pollBar.children[0].style.setProperty("display", "none")
+            pollBar.previousElementSibling.textContent = results[i].Votes
+            pollBar.previousElementSibling.style.setProperty("display","block")    
+        }
+        
+        pollBar.style.setProperty("--size", size)
+    })
+}
+
+function getResults(pollId) {
+    let xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            uploadResults(JSON.parse(this.responseText).Options)
+        }
+    }
+
+    xhttp.open("GET", getBaseURL()+`api/getResults.php?PollId=${pollId}`);
+    xhttp.send();
+}
+
+setInterval(() => getResults(pollId), 10000)
 
 function createResutls(poll) {
     let results = document.getElementById("results")

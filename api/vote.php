@@ -22,7 +22,7 @@
 
     $pollId = $_GET["PollId"];
     vote($pollId, $_POST["vote"]);
-    $baseURL = getBaseURL(true);
-    header("Location: {$baseURL}pollio/poll_results?pollID=$pollId");
-    die();
+    // $baseURL = getBaseURL(true);
+    // header("Location: {$baseURL}pollio/poll_results?pollID=$pollId");
+    // die();
 ?>
