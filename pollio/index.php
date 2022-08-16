@@ -36,7 +36,7 @@
     <title>Pollio</title>
     <script defer src="<?php echo getJSFrom("main_page"); ?>"></script>
     <script>
-        let graphs = <?php echo getGraphsJson($graphs)?>
+        let graphs = <?php echo json_encode($graphs)?>
     </script>
     <?php echo getCSSLinkFrom("main_page");?>
 </head>

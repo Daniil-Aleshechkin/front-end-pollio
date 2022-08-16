@@ -1,15 +1,22 @@
 <?php
     namespace Pollio\DataAccess\Models;
-    
+
     class PollOption {
+        public int $Votes;
+        public string $Name;
+        public int $Color;
+        public int $PollOptionId;
+
         public function __construct(
-            public readonly int $votes,
-            public readonly string $name,
-            public readonly int $color = -1
+            int $votes,
+            string $name,
+            int $color = -1,
+            int $pollOptionId = -1
         ) {
             $this->Votes = $votes;
             $this->Name = $name;
             $this->Color = $color;
+            $this->PollOptionId = $pollOptionId;
         }
 
         function toJson() {
@@ -28,10 +35,10 @@
         public readonly int $PollId;
 
         public function __construct(
-            public readonly string  $question,
-            public readonly array $options,
-            public readonly int $createdDate = 0,
-            public readonly int $pollid = -1
+            string  $question,
+            array $options,
+            int $createdDate = 0,
+            int $pollid = -1
         ) {
             $this->CreatedDate = $createdDate;
             $this->Question = $question;

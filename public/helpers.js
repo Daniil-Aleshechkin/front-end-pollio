@@ -40,9 +40,16 @@ function createElementWithText(elementName, text) {
     return element
 }
 
+const ISDEV = true;
+
+function getBaseURL() {
+    return ISDEV ? "http://localhost:8000/" : "http://webdev.uregina.ca/~dsa005/"
+}
+
 module.exports = {
     getCSSVariable,
     createElementWithText,
     createElementWithClass,
-    capitalize
+    capitalize,
+    getBaseURL
 }

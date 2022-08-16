@@ -1,7 +1,7 @@
 <?php 
     namespace Pollio\Url;
     
-    define("IS_DEV", false);
+    define("IS_DEV", true);
 
     function getJSFrom($page) {
         if (IS_DEV) {

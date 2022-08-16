@@ -7,6 +7,7 @@
         foreach($graphs as $graph) {
             defineGraphColors($graph);
         }
+        return $graphs;
     }
 
     function defineGraphColors(Poll $graph) {

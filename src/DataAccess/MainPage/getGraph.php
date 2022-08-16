@@ -24,7 +24,8 @@
         P.PollId,
         P.Question,
         PO.OptionName,
-        PO.Votes
+        PO.Votes,
+        PO.PollOptionId
     FROM temp_polls AS P
     INNER JOIN PollOptions AS PO ON
         PO.PollId = P.PollId
@@ -44,15 +45,15 @@
             foreach($connection->query($selectTop5TablesQuery) as $row) {
                 if ($row["PollId"] !== $currentPoll) {
                     if ($currentPoll != -1) {
-                        array_push($polls, new Poll($pollQuestion, $options));
+                        array_push($polls, new Poll($pollQuestion, $options, 0, $currentPoll));
                     }
                     $options = array();
                     $currentPoll = $row["PollId"];
                     $pollQuestion = $row["Question"];
                 }
-                array_push($options, new PollOption($row["Votes"],$row["OptionName"]));
+                array_push($options, new PollOption($row["Votes"],$row["OptionName"],-1,$row["PollOptionId"]));
             }
-            array_push($polls, new Poll($pollQuestion, $options));
+            array_push($polls, new Poll($pollQuestion, $options, 0, $currentPoll));
             $connection->query("DROP TABLE temp_polls;");
         }
         catch (PDOException $ex) {

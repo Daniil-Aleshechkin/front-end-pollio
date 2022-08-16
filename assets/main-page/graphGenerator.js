@@ -1,4 +1,4 @@
-import { createElementWithText, getCSSVariable} from "../../public/helpers";
+import { createElementWithText, getCSSVariable, getBaseURL} from "../../public/helpers";
 
 const SEGMENT_UNDER_OFFSET = 2;
 
@@ -8,25 +8,83 @@ let currentGraph = 0;
 //updateMainGraph(graphs[currentGraph]);
 //updateGraphSidebar(graphs.filter((_, index) => index !== 0));
 
-function updateMainGraph(graph) {
+function updateGraphData(newGraphData) {
+    let existingPolls = []
+
+    for (let i = 0; i < graphs.length; i++) {
+        existingPolls.push(graphs[i].PollId)
+    }
+
+    existingPolls.sort();
+    let deletingElements = [];
+    let addingPolls = [];
+    while (existingPolls.length > 0) {
+        if(existingPolls[existingPolls.length-1] != newGraphData[existingPolls.length-1].PollId){
+            deletingElements.push(existingPolls[0]);
+            addingPolls.push(newGraphData[existingPolls.length-1]);
+            existingPolls.shift();
+        } else {
+            graphs[existingPolls.length-1].Options.forEach((option,i)=> {
+                option.Votes = newGraphData[existingPolls.length-1].Options[i].Votes
+            })
+            existingPolls.pop();
+        }
+    }
+    
+    for (let i = 0; i < graphs.length; i++) {
+        if (graphs[i].PollId in deletingElements) {
+            graphs[i] = addingPolls[0];
+            addingPolls.shift();
+        }
+    }
+}
+
+function updateGraphs() {
+    for (let i = 0; i < graphs.length; i++) {
+        try {
+            document.getElementById(`graph-${i}`).replaceChildren(...createGraphSegments(graphs[i].Options))
+        } catch {
+            updateMainGraph(graphs[i], false);
+        }
+    }
+}
+
+function getGraphData() {
+    var xhttp = new XMLHttpRequest();
+    let topGraphs = [];
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            topGraphs = JSON.parse(this.responseText);
+
+            updateGraphData(topGraphs);
+            updateGraphs();
+        }
+    };
+    xhttp.open("GET", getBaseURL()+ "api/getPolls.php", true);
+    xhttp.send();
+    return topGraphs;
+}
+setInterval(getGraphData, 10000);
+
+function updateMainGraph(graph, animate) {
     let mainGraph = document.getElementsByClassName("main-graph-display")[0];
 
     //Replace title
-    mainGraph.children[0].replaceChildren(document.createTextNode(graph.question));
+    mainGraph.children[0].replaceChildren(document.createTextNode(graph.Question));
     
     //Replace main graph
-    mainGraph.children[1].replaceChildren(...createGraphSegments(graph.options, true));
+    mainGraph.children[1].replaceChildren(...createGraphSegments(graph.Options, animate));
 
     //Replace legend
-    mainGraph.children[2].replaceChildren(...createLegendElements(graph.options))
+    mainGraph.children[2].replaceChildren(...createLegendElements(graph.Options))
 }
 
 function createLegendElements(options) {
     let legendElements = [];
 
     options.forEach((option) => {
-            let legendElement = createElementWithText("p", option.name);
-            legendElement.style.setProperty("--legend-color", getCSSVariable(`option-${option.color}-color`))
+            let legendElement = createElementWithText("p", option.Name);
+            legendElement.style.setProperty("--legend-color", getCSSVariable(`option-${option.Color}-color`))
             legendElements.push(legendElement);
         }
     )
@@ -36,35 +94,42 @@ function createLegendElements(options) {
 
 function createGraphSegments(options, animate=false) {
     if (options.length === 1) {
-        return [createSegment(180, 0, options[0].color, 1, animate),
-                createSegment(180, 180, options[0].color, 1, animate)]
+        return [createSegment(180, 0, options[0].Color, 1, animate),
+                createSegment(180, 180, options[0].Color, 1, animate)]
     }
 
     let segments = [];
     
     let total = options.reduce((sum, currentOption) =>
-        sum += currentOption.value
+        sum += currentOption.Votes
     , 0);
+
+    if (total == 0) {
+        total = 1;
+    }
 
     let currentFilledGraph = 0;
 
     options.forEach((option, index) => {
-        let value = Math.floor(Math.round(option.value/total*360)) + ((index === options.length -1) ? SEGMENT_UNDER_OFFSET : 0) + ((index !== 0) ? SEGMENT_UNDER_OFFSET : 0);
-
+        let value = Math.floor(Math.round(option.Votes/total*360)) + ((index === options.length -1) ? SEGMENT_UNDER_OFFSET : 0) + ((index !== 0) ? SEGMENT_UNDER_OFFSET : 0);
+        if (option.Votes == 0) {
+            return;
+        }
+        //console.log(option, value);
         let offset = (index === 0) ? 0 : (currentFilledGraph -  SEGMENT_UNDER_OFFSET);
 
         if (value >= 180) {
             segments.push(createSegment(
                 180,
                 offset,
-                option.color,
+                option.Color,
                 options.length-index,
                 animate
             ));
             segments.push(createSegment(
                 value-180+SEGMENT_UNDER_OFFSET,
                 offset+180-SEGMENT_UNDER_OFFSET,
-                option.color,
+                option.Color,
                 options.length-index,
                 animate
             ));
@@ -72,7 +137,7 @@ function createGraphSegments(options, animate=false) {
             segments.push(createSegment(
                 value,
                 offset,
-                option.color,
+                option.Color,
                 options.length-index,
                 animate
             ));
@@ -111,8 +176,8 @@ function onGraphSideBarClick(e)  {
     let triggeredGraphId = triggeredGraph.id;
     let triggeredGraphIndex = triggeredGraphId.slice(triggeredGraphId.length - 1);
 
-    updateMainGraph(graphs[triggeredGraphIndex]);
-    triggeredGraph.replaceChildren(...createGraphSegments(graphs[currentGraph].options, false));
+    updateMainGraph(graphs[triggeredGraphIndex], true);
+    triggeredGraph.replaceChildren(...createGraphSegments(graphs[currentGraph].Options, false));
     triggeredGraph.id = `graph-${currentGraph}`;
 
     currentGraph = triggeredGraphIndex;
