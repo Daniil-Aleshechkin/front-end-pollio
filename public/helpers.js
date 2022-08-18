@@ -43,7 +43,7 @@ function createElementWithText(elementName, text) {
 const ISDEV = false;
 
 function getBaseURL() {
-    return ISDEV ? "http://localhost:8000/" : "http://www.webdev.cs.uregina.ca/~dsa005"
+    return ISDEV ? "http://localhost:8000/" : "http://www.webdev.cs.uregina.ca/~dsa005/"
 }
 
 module.exports = {
