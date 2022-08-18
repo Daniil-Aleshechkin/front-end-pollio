@@ -40,7 +40,7 @@ function createElementWithText(elementName, text) {
     return element
 }
 
-const ISDEV = true;
+const ISDEV = false;
 
 function getBaseURL() {
     return ISDEV ? "http://localhost:8000/" : "http://webdev.uregina.ca/~dsa005/"
