@@ -15,14 +15,13 @@
     function getUserID($passwordHash, $email) {
         return "SELECT UserId, Username FROM Users WHERE Email='$email' AND PasswordHash=0x$passwordHash";
     }
-
+    $loginSuccessful = false;
     $connection = getConnection();
     $AES = new AES256();
     foreach ($connection->query(getSaltKey($_POST['email'])) as $row) {
         $passwordHash = hash('sha256', $_POST["password"], true);
         //echo $AES->decrypt($row['SaltKey'], "unsecurekey");
         $passwordHashSalted = hash('sha256', $passwordHash . $AES->decrypt($row['SaltKey'], "unsecurekey"), true);
-        echo bin2hex($passwordHashSalted);
     }
 
     if($_SESSION['UserId'] != null) {
@@ -34,9 +33,15 @@
     foreach($connection->query(getUserID(bin2hex($passwordHashSalted), $_POST['email'])) as $row)  {
         $_SESSION['UserId'] = $row["UserId"];
         $_SESSION['Username'] = $row["Username"];
+        $loginSuccessful = true;
     }
 
-    $baseURL = getBaseURL(true);
-    header("Location: {$baseURL}pollio/poll_management");
-    die();
+    if ($loginSuccessful) {
+        $baseURL = getBaseURL(true);
+        header("Location: {$baseURL}pollio/poll_management");
+        die();
+    } else {
+        echo "LOGIN FAILED";
+    }
+
 ?>
