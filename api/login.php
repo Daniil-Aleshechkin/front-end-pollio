@@ -9,11 +9,11 @@
     use function Pollio\Url\getBaseURL;
 
     function getSaltKey($email) {
-        return "SELECT SaltKey FROM users WHERE Email='$email'";
+        return "SELECT SaltKey FROM Users WHERE Email='$email'";
     }
 
     function getUserID($passwordHash, $email) {
-        return "SELECT UserId, Username FROM users WHERE Email='$email' AND PasswordHash=0x$passwordHash";
+        return "SELECT UserId, Username FROM Users WHERE Email='$email' AND PasswordHash=0x$passwordHash";
     }
 
     $connection = getConnection();
